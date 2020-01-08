@@ -10,5 +10,44 @@ package dawcoffeeadriannaomi;
  * @author adrip
  */
 public class Usuario {
-    
+  
+//Atributos 
+    private String usuario;
+    private String password;
+
+//Constructor parametrizado
+    public Usuario(String usuario, String password) {
+        this.usuario = usuario;
+        this.password = password;
+    }
+
+//Getters y Setters
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+//Constructor por defecto
+    public Usuario() {
+        this.usuario = "admin";
+        this.password = "admin";
+    }
+
+//toString
+    @Override
+    public String toString() {
+        return "Usuario{" + "usuario=" + usuario + ", password=" + password + '}';
+    }
+  
 }
