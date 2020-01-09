@@ -10,7 +10,8 @@ package dawcoffeeadriannaomi;
  * @author adrip
  */
 public class Deposito {
-  //Añadimos atributos de la clase Depósito
+    
+    //Añadimos atributos de la clase Depósito
     private String contenido;
     private double cantidadMaxima;
     private double cantidadUmbral;
@@ -24,6 +25,15 @@ public class Deposito {
         this.cantidadUmbral = cantidadUmbral;
         this.cantidadActual = cantidadActual;
         estadoReserva();
+    }
+
+    //Constructor por defecto
+    public Deposito() {
+        this.contenido = "Nueva";
+        this.cantidadMaxima = 100;
+        this.cantidadUmbral = 20;
+        this.cantidadActual = 0;
+        this.reserva = true;
 
     }
 
@@ -32,7 +42,6 @@ public class Deposito {
             this.reserva = true;
             System.out.println("La cantidad de " + getContenido() + " ha entrado en reserva, necesitamos recarcar");
         }
-
     }
 
     //Añadimos Getters y Setters
@@ -75,7 +84,8 @@ public class Deposito {
     public void setReserva(boolean reserva) {
         this.reserva = reserva;
     }
-
+    
+    //Método toString
     @Override
     public String toString() {
         return "Deposito{" + "contenido=" + contenido + ", cantidadMaxima=" + cantidadMaxima + ", cantidadUmbral=" + cantidadUmbral + ", cantidadActual=" + cantidadActual + '}';
