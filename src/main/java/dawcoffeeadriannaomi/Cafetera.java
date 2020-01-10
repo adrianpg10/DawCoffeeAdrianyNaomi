@@ -28,11 +28,11 @@ public class Cafetera {
         this.saldoCliente = 100;
         this.saldoAcumulado = 200;
         this.numVentasRealizadas = 2;
-        this.leche = new Deposito("leche", 80, 30, 50);
+        this.leche = new Deposito("leche", 80, 30, 30);
         this.cafe = new Deposito("cafe", 80, 50, 70);
         this.chocolate = new Deposito("chocolate", 80, 30, 50);
         this.agua = new Deposito("agua", 80, 50, 60);
-        this.azucar = new Deposito("azucar", 50, 30, 60);
+        this.azucar = new Deposito("azucar", 50, 30, 20);
     }
 
     //Constructor parametrizado
@@ -118,6 +118,29 @@ public class Cafetera {
         return "Cafetera{" + "saldoCliente=" + saldoCliente + ", saldoAcumulado=" + saldoAcumulado + ", numVentasRealizadas=" + numVentasRealizadas + ", leche=" + leche + ", cafe=" + cafe + ", chocolate=" + chocolate + ", agua=" + agua + ", azucar=" + azucar + '}';
     }
 
-    
+    //Comprobamos si los depositos deben ser rellenados
+    public void comprobarDepositos() {
+
+        if (getLeche().getCantidadActual() <= getLeche().getCantidadUmbral()) {
+            JOptionPane.showMessageDialog(null, "El depósito de " + getLeche().getContenido() + ", debe ser rellenado");
+        }
+
+        if (getAzucar().getCantidadActual() <= getAzucar().getCantidadUmbral()) {
+            JOptionPane.showMessageDialog(null, "El depósito de " + getAzucar().getContenido() + ", debe ser rellenado");
+        }
+
+        if (getCafe().getCantidadActual() <= getCafe().getCantidadUmbral()) {
+            JOptionPane.showMessageDialog(null, "El depósito de " + getCafe().getContenido() + ", debe ser rellenado");
+        }
+
+        if (getChocolate().getCantidadActual() <= getChocolate().getCantidadUmbral()) {
+            JOptionPane.showMessageDialog(null, "El depósito de " + getChocolate().getContenido() + ", debe ser rellenado");
+        }
+
+        if (getAgua().getCantidadActual() <= getAgua().getCantidadUmbral()) {
+            JOptionPane.showMessageDialog(null, "El depósito de " + getAgua().getContenido() + ", debe ser rellenado");
+        }
+
+    }
 
 }
