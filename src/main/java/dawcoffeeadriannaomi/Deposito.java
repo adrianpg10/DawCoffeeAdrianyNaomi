@@ -24,7 +24,7 @@ public class Deposito {
         this.cantidadMaxima = cantidadMaxima;
         this.cantidadUmbral = cantidadUmbral;
         this.cantidadActual = cantidadActual;
-        estadoReserva();
+        
     }
 
     //Constructor por defecto
@@ -37,12 +37,6 @@ public class Deposito {
 
     }
 
-    private void estadoReserva() {
-        if (this.cantidadActual <= this.cantidadUmbral) {
-            this.reserva = true;
-            System.out.println("La cantidad de " + getContenido() + " ha entrado en reserva, necesitamos recarcar");
-        }
-    }
 
     //Añadimos Getters y Setters
     public String getContenido() {
