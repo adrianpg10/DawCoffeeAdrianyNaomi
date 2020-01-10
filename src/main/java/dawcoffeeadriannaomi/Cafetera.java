@@ -30,7 +30,7 @@ public class Cafetera {
         this.saldoAcumulado = 200;
         this.numVentasRealizadas = 2;
         this.leche = new Deposito("leche", 80, 30, 50);
-        this.cafe = new Deposito("cafe", 80, 50, 70);
+        this.cafe = new Deposito("cafe", 80, 50, 60);
         this.chocolate = new Deposito("chocolate", 80, 30, 50);
         this.agua = new Deposito("agua", 80, 50, 60);
         this.azucar = new Deposito("azucar", 50, 30, 60);
@@ -127,30 +127,40 @@ public class Cafetera {
 
     //Comprobamos si los depositos deben ser rellenados
     public void comprobarDepositos() {
+        boolean reserva = true;
 
         if (getLeche().getCantidadActual() <= getLeche().getCantidadUmbral()) {
             JOptionPane.showMessageDialog(null, "El depósito de " + getLeche().getContenido() + ", debe ser rellenado");
+            reserva = false;
         }
 
         if (getAzucar().getCantidadActual() <= getAzucar().getCantidadUmbral()) {
             JOptionPane.showMessageDialog(null, "El depósito de " + getAzucar().getContenido() + ", debe ser rellenado");
+            reserva = false;
         }
 
         if (getCafe().getCantidadActual() <= getCafe().getCantidadUmbral()) {
             JOptionPane.showMessageDialog(null, "El depósito de " + getCafe().getContenido() + ", debe ser rellenado");
+            reserva = false;
         }
 
         if (getChocolate().getCantidadActual() <= getChocolate().getCantidadUmbral()) {
             JOptionPane.showMessageDialog(null, "El depósito de " + getChocolate().getContenido() + ", debe ser rellenado");
+            reserva = false;
         }
 
         if (getAgua().getCantidadActual() <= getAgua().getCantidadUmbral()) {
             JOptionPane.showMessageDialog(null, "El depósito de " + getAgua().getContenido() + ", debe ser rellenado");
+            reserva = false;
+        }
+
+        if (reserva == true) {
+            JOptionPane.showMessageDialog(null, "Ningun deposito ha llegado a la capacidad Umbral");
         }
 
     }
 
-    //Metodo para comprobar el estado general de los depositos de la cafetera.
+//Metodo para comprobar el estado general de los depositos de la cafetera.
     public void comprobarEstadoGeneral() {
 
         JOptionPane.showMessageDialog(null, " Deposito de:  " + getAgua().getContenido() + "\n "
