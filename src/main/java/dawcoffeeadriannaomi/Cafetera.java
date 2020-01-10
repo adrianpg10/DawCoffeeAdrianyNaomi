@@ -150,6 +150,38 @@ public class Cafetera {
 
     }
 
-   
+    //Metodo para comprobar el estado general de los depositos de la cafetera.
+    public void comprobarEstadoGeneral() {
+
+        JOptionPane.showMessageDialog(null, " Deposito de:  " + getAgua().getContenido() + "\n "
+                + "Cantidad Máxima: " + getAgua().getCantidadMaxima() + "\n "
+                + "Cantidad Umbral: " + getAgua().getCantidadUmbral() + "\n "
+                + "Cantidad Actual: " + getAgua().getCantidadActual());
+
+        JOptionPane.showMessageDialog(null, " Deposito de:  " + getCafe().getContenido() + "\n "
+                + "Cantidad Máxima: " + getCafe().getCantidadMaxima() + "\n "
+                + "Cantidad Umbral: " + getCafe().getCantidadUmbral() + "\n "
+                + "Cantidad Actual: " + getCafe().getCantidadActual());
+
+        JOptionPane.showMessageDialog(null, " Deposito de:  " + getLeche().getContenido() + "\n "
+                + "Cantidad Máxima: " + getLeche().getCantidadMaxima() + "\n "
+                + "Cantidad Umbral: " + getLeche().getCantidadUmbral() + "\n "
+                + "Cantidad Actual: " + getLeche().getCantidadActual());
+
+        JOptionPane.showMessageDialog(null, " Deposito de:  " + getAzucar().getContenido() + "\n "
+                + "Cantidad Máxima: " + getAzucar().getCantidadMaxima() + "\n "
+                + "Cantidad Umbral: " + getAzucar().getCantidadUmbral() + "\n "
+                + "Cantidad Actual: " + getAzucar().getCantidadActual());
+
+        JOptionPane.showMessageDialog(null, " Deposito de:  " + getChocolate().getContenido() + "\n "
+                + "Cantidad Máxima: " + getChocolate().getCantidadMaxima() + "\n "
+                + "Cantidad Umbral: " + getChocolate().getCantidadUmbral() + "\n "
+                + "Cantidad Actual: " + getChocolate().getCantidadActual());
+
+        JOptionPane.showMessageDialog(null, " Cuenta del Administrador:  " + "\n "
+                + "Usuario: " + getAdmin().getUsuario() + "\n "
+                + "Contraseña: " + getAdmin().getPassword() + "\n ");
+
+    }
 
 }
