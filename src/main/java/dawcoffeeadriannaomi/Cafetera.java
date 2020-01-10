@@ -22,17 +22,19 @@ public class Cafetera {
     private Deposito chocolate;
     private Deposito agua;
     private Deposito azucar;
+    private Usuario admin;
 
     //Constructor por defecto
     public Cafetera() {
         this.saldoCliente = 100;
         this.saldoAcumulado = 200;
         this.numVentasRealizadas = 2;
-        this.leche = new Deposito("leche", 80, 30, 30);
+        this.leche = new Deposito("leche", 80, 30, 50);
         this.cafe = new Deposito("cafe", 80, 50, 70);
         this.chocolate = new Deposito("chocolate", 80, 30, 50);
         this.agua = new Deposito("agua", 80, 50, 60);
-        this.azucar = new Deposito("azucar", 50, 30, 20);
+        this.azucar = new Deposito("azucar", 50, 30, 60);
+        this.admin = new Usuario();
     }
 
     //Constructor parametrizado
@@ -45,11 +47,16 @@ public class Cafetera {
         this.chocolate = chocolate;
         this.agua = agua;
         this.azucar = azucar;
+
     }
 
     //Métodos getters y setters
     public double getSaldoCliente() {
         return saldoCliente;
+    }
+
+    public Usuario getAdmin() {
+        return admin;
     }
 
     public void setSaldoCliente(double saldoCliente) {
@@ -142,5 +149,7 @@ public class Cafetera {
         }
 
     }
+
+   
 
 }
