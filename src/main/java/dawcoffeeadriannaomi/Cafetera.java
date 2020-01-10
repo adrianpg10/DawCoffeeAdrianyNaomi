@@ -5,6 +5,8 @@
  */
 package dawcoffeeadriannaomi;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author adrip
@@ -23,14 +25,14 @@ public class Cafetera {
 
     //Constructor por defecto
     public Cafetera() {
-        this.saldoCliente = 0;
-        this.saldoAcumulado = 0;
-        this.numVentasRealizadas = 0;
-        this.leche = new Deposito();
-        this.cafe = cafe;
-        this.chocolate = chocolate;
-        this.agua = agua;
-        this.azucar = azucar;
+        this.saldoCliente = 100;
+        this.saldoAcumulado = 200;
+        this.numVentasRealizadas = 2;
+        this.leche = new Deposito("leche", 80, 30, 50);
+        this.cafe = new Deposito("cafe", 80, 50, 70);
+        this.chocolate = new Deposito("chocolate", 80, 30, 50);
+        this.agua = new Deposito("agua", 80, 50, 60);
+        this.azucar = new Deposito("azucar", 50, 30, 60);
     }
 
     //Constructor parametrizado
@@ -115,4 +117,7 @@ public class Cafetera {
     public String toString() {
         return "Cafetera{" + "saldoCliente=" + saldoCliente + ", saldoAcumulado=" + saldoAcumulado + ", numVentasRealizadas=" + numVentasRealizadas + ", leche=" + leche + ", cafe=" + cafe + ", chocolate=" + chocolate + ", agua=" + agua + ", azucar=" + azucar + '}';
     }
+
+    
+
 }
