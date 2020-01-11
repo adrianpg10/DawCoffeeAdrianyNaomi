@@ -23,17 +23,18 @@ public class Cafetera {
     private Deposito agua;
     private Deposito azucar;
     private Usuario admin;
+    private static int contador = 0; //Para calcular el número de ventas
 
     //Constructor por defecto
-    public Cafetera() {
-        this.saldoCliente = 100;
+    public Cafetera() { //Medida gramo
+        this.saldoCliente = 5;
         this.saldoAcumulado = 200;
-        this.numVentasRealizadas = 2;
-        this.leche = new Deposito("leche", 80, 30, 50);
-        this.cafe = new Deposito("cafe", 80, 50, 60);
-        this.chocolate = new Deposito("chocolate", 80, 30, 50);
-        this.agua = new Deposito("agua", 90, 50, 20);
-        this.azucar = new Deposito("azucar", 50, 30, 60);
+        this.numVentasRealizadas = 195;
+        this.leche = new Deposito("leche", 1000, 300, 2500);
+        this.cafe = new Deposito("cafe", 3000, 500, 2000);
+        this.chocolate = new Deposito("chocolate", 1000, 300, 900);
+        this.agua = new Deposito("agua", 2000, 500, 1500);
+        this.azucar = new Deposito("azucar", 1000, 200, 600);
         this.admin = new Usuario();
     }
 
@@ -47,9 +48,16 @@ public class Cafetera {
         this.chocolate = chocolate;
         this.agua = agua;
         this.azucar = azucar;
-
     }
-
+    
+    //Método servirCafeSolo que actualiza el estado de los depósitos 
+    //Nota: Un vaso 180 ml/gr - El café solo suele tener algo más de la mitad de la capacidad del vaso
+    public void servirCafeSolo(Deposito cafe, Deposito agua){
+        cafe.setCantidadActual(cafe.getCantidadActual() - 50);
+        agua.setCantidadActual(agua.getCantidadActual()- 50);
+        contador++;
+    }
+    
     //Métodos getters y setters
     public double getSaldoCliente() {
         return saldoCliente;
@@ -155,12 +163,12 @@ public class Cafetera {
         }
 
         if (reserva == true) {
-            JOptionPane.showMessageDialog(null, "Ningun deposito ha llegado a la capacidad Umbral");
+            JOptionPane.showMessageDialog(null, "Ningún deposito ha llegado a la capacidad Umbral");
         }
 
     }
 
-//Metodo para comprobar el estado general de los depositos de la cafetera.
+    //Método que comprueba el estado general de los depósitos de la cafetera.
     public void comprobarEstadoGeneral() {
 
         JOptionPane.showMessageDialog(null, " Deposito de:  " + getAgua().getContenido() + "\n "
@@ -194,7 +202,7 @@ public class Cafetera {
 
     }
 
-    //Metodo para rellenar los depositos, que se llenará en funcion de 2 opciones, por completo o la cantidad elegida
+    //Método que rellena los depósitos. Se llenará en funcion de 2 opciones: por completo o según la cantidad elegida
     public void rellenarDepositos() {
         int opcionElegida;
         String opcionllenado;
