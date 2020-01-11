@@ -78,28 +78,43 @@ public class Cafetera {
         leche.setCantidadActual(leche.getCantidadActual() - 30);
         contador++;
     }
-    
+
     //Método servirChocolate que actualiza el estado de los depósitos
     public void servirChocolate(Deposito chocolate, Deposito leche) {
         chocolate.setCantidadActual(chocolate.getCantidadActual() - 80);
         leche.setCantidadActual(leche.getCantidadActual() - 100);
         contador++;
     }
-    
+
     //Método servirLeche (en el menú controlaremos que sea caliete o fría)
-    public void servirLeche(Deposito Leche){
+    public void servirLeche(Deposito Leche) {
         leche.setCantidadActual(leche.getCantidadActual() - 180);
     }
-    
+
     //Método servirAzucar que sirve una o dos cucharadas según elija el cliente
-    public void servirAzucar (Deposito azucar, int numeroCucharadas){
-        if(numeroCucharadas == 1){
+    public void servirAzucar(Deposito azucar, int numeroCucharadas) {
+        if (numeroCucharadas == 1) {
             azucar.setCantidadActual(azucar.getCantidadActual() - 5);
-        }else{
+        } else {
             azucar.setCantidadActual(azucar.getCantidadActual() - 10);
         }
     }
-    
+
+    //Método acumularSaldoCliente
+    public void acumularSaldoCliente(double saldoIntroducido) {
+        this.saldoCliente += saldoIntroducido;
+    }
+
+    //Método saldoSuficiente devuelve un boolean, true si el dinero introducido por el cliente
+    //es igual o superior al precio mínimo que se necesita para comprar un producto sino devuelve false
+    public boolean saldoSuficiente() {
+        if (this.saldoCliente < 0.50) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     //Métodos getters y setters
     public double getSaldoCliente() {
         return saldoCliente;
