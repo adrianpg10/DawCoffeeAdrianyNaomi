@@ -85,7 +85,21 @@ public class Cafetera {
         leche.setCantidadActual(leche.getCantidadActual() - 100);
         contador++;
     }
-
+    
+    //Método servirLeche (en el menú controlaremos que sea caliete o fría)
+    public void servirLeche(Deposito Leche){
+        leche.setCantidadActual(leche.getCantidadActual() - 180);
+    }
+    
+    //Método servirAzucar que sirve una o dos cucharadas según elija el cliente
+    public void servirAzucar (Deposito azucar, int numeroCucharadas){
+        if(numeroCucharadas == 1){
+            azucar.setCantidadActual(azucar.getCantidadActual() - 5);
+        }else{
+            azucar.setCantidadActual(azucar.getCantidadActual() - 10);
+        }
+    }
+    
     //Métodos getters y setters
     public double getSaldoCliente() {
         return saldoCliente;
