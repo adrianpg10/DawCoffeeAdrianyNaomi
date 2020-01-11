@@ -32,7 +32,7 @@ public class Cafetera {
         this.leche = new Deposito("leche", 80, 30, 50);
         this.cafe = new Deposito("cafe", 80, 50, 60);
         this.chocolate = new Deposito("chocolate", 80, 30, 50);
-        this.agua = new Deposito("agua", 80, 50, 60);
+        this.agua = new Deposito("agua", 90, 50, 20);
         this.azucar = new Deposito("azucar", 50, 30, 60);
         this.admin = new Usuario();
     }
@@ -194,4 +194,212 @@ public class Cafetera {
 
     }
 
+    //Metodo para rellenar los depositos, que se llenará en funcion de 2 opciones, por completo o la cantidad elegida
+    public void rellenarDepositos() {
+        int opcionElegida;
+        String opcionllenado;
+        int eleccion;
+        String indicaCantidad;
+        double cantidadIndicada;
+
+        String opciondepositos = JOptionPane.showInputDialog(
+                "Elije el deposito a rellenar: \n"
+                + "1.- Agua \n"
+                + "2.- Café \n"
+                + "3.- Leche \n"
+                + "4.- Azúcar \n"
+                + "5.- Chocolate");
+
+        //Paso el String "opcion" a int haciendo un parseo
+        opcionElegida = Integer.parseInt(opciondepositos);
+
+        switch (opcionElegida) {
+            case 1:
+
+                opcionllenado = JOptionPane.showInputDialog(
+                        "¿Cómo quieres llenarlo? \n"
+                        + "1.- Completo \n"
+                        + "2.- Indica la cantidad ");
+
+                eleccion = Integer.parseInt(opcionllenado);
+
+                switch (eleccion) {
+                    case 1:
+
+                        getAgua().setCantidadActual(getAgua().getCantidadMaxima());
+
+                        JOptionPane.showMessageDialog(null, "El depósito de " + getAgua().getContenido() + " se ha llenado por completo");
+
+                        break;
+                    case 2:
+
+                        indicaCantidad = JOptionPane.showInputDialog("Indica la cantidad: ");
+
+                        cantidadIndicada = Integer.parseInt(indicaCantidad);
+
+                        if (cantidadIndicada >= getAgua().getCantidadMaxima() || (cantidadIndicada + getAgua().getCantidadActual()) >= getAgua().getCantidadMaxima()) {
+                            getAgua().setCantidadActual(getAgua().getCantidadMaxima());
+                            JOptionPane.showMessageDialog(null, "La cantidad de " + getAgua().getContenido() + " es de: " + getAgua().getCantidadActual());
+                        } else {
+
+                            getAgua().setCantidadActual(cantidadIndicada + getAgua().getCantidadActual());
+                            JOptionPane.showMessageDialog(null, "La cantidad de " + getAgua().getContenido() + " es de: " + getAgua().getCantidadActual());
+                        }
+
+                        break;
+                }
+
+                break;
+
+            case 2:
+
+                opcionllenado = JOptionPane.showInputDialog(
+                        "¿Cómo quieres llenarlo? \n"
+                        + "1.- Completo \n"
+                        + "2.- Indica la cantidad ");
+
+                eleccion = Integer.parseInt(opcionllenado);
+
+                switch (eleccion) {
+                    case 1:
+
+                        getCafe().setCantidadActual(getCafe().getCantidadMaxima());
+
+                        JOptionPane.showMessageDialog(null, "El depósito de " + getCafe().getContenido() + " se ha llenado por completo");
+
+                        break;
+                    case 2:
+
+                        indicaCantidad = JOptionPane.showInputDialog("Indica la cantidad: ");
+
+                        cantidadIndicada = Integer.parseInt(indicaCantidad);
+
+                        if (cantidadIndicada >= getCafe().getCantidadMaxima() || (cantidadIndicada + getCafe().getCantidadActual()) >= getCafe().getCantidadMaxima()) {
+                            getCafe().setCantidadActual(getCafe().getCantidadMaxima());
+                            JOptionPane.showMessageDialog(null, "La cantidad de " + getCafe().getContenido() + " es de: " + getCafe().getCantidadActual());
+                        } else {
+
+                            getCafe().setCantidadActual(cantidadIndicada + getCafe().getCantidadActual());
+                            JOptionPane.showMessageDialog(null, "La cantidad de " + getCafe().getContenido() + " es de: " + getCafe().getCantidadActual());
+                        }
+
+                        break;
+                }
+
+                break;
+
+            case 3:
+
+                opcionllenado = JOptionPane.showInputDialog(
+                        "¿Cómo quieres llenarlo? \n"
+                        + "1.- Completo \n"
+                        + "2.- Indica la cantidad ");
+
+                eleccion = Integer.parseInt(opcionllenado);
+
+                switch (eleccion) {
+                    case 1:
+
+                        getLeche().setCantidadActual(getLeche().getCantidadMaxima());
+
+                        JOptionPane.showMessageDialog(null, "El depósito de " + getLeche().getContenido() + " se ha llenado por completo");
+
+                        break;
+                    case 2:
+
+                        indicaCantidad = JOptionPane.showInputDialog("Indica la cantidad: ");
+
+                        cantidadIndicada = Integer.parseInt(indicaCantidad);
+
+                        if (cantidadIndicada >= getLeche().getCantidadMaxima() || (cantidadIndicada + getLeche().getCantidadActual()) >= getLeche().getCantidadMaxima()) {
+                            getLeche().setCantidadActual(getLeche().getCantidadMaxima());
+                            JOptionPane.showMessageDialog(null, "La cantidad de " + getLeche().getContenido() + " es de: " + getLeche().getCantidadActual());
+                        } else {
+
+                            getLeche().setCantidadActual(cantidadIndicada + getLeche().getCantidadActual());
+                            JOptionPane.showMessageDialog(null, "La cantidad de " + getLeche().getContenido() + " es de: " + getLeche().getCantidadActual());
+                        }
+
+                        break;
+                }
+
+                break;
+
+            case 4:
+
+                opcionllenado = JOptionPane.showInputDialog(
+                        "¿Cómo quieres llenarlo? \n"
+                        + "1.- Completo \n"
+                        + "2.- Indica la cantidad ");
+
+                eleccion = Integer.parseInt(opcionllenado);
+
+                switch (eleccion) {
+                    case 1:
+
+                        getAzucar().setCantidadActual(getAzucar().getCantidadMaxima());
+
+                        JOptionPane.showMessageDialog(null, "El depósito de " + getAzucar().getContenido() + " se ha llenado por completo");
+
+                        break;
+                    case 2:
+
+                        indicaCantidad = JOptionPane.showInputDialog("Indica la cantidad: ");
+
+                        cantidadIndicada = Integer.parseInt(indicaCantidad);
+
+                        if (cantidadIndicada >= getAzucar().getCantidadMaxima() || (cantidadIndicada + getAzucar().getCantidadActual()) >= getAzucar().getCantidadMaxima()) {
+                            getAzucar().setCantidadActual(getAzucar().getCantidadMaxima());
+                            JOptionPane.showMessageDialog(null, "La cantidad de " + getAzucar().getContenido() + " es de: " + getAzucar().getCantidadActual());
+                        } else {
+
+                            getAzucar().setCantidadActual(cantidadIndicada + getAzucar().getCantidadActual());
+                            JOptionPane.showMessageDialog(null, "La cantidad de " + getAzucar().getContenido() + " es de: " + getAzucar().getCantidadActual());
+                        }
+
+                        break;
+                }
+
+                break;
+
+            case 5:
+
+                opcionllenado = JOptionPane.showInputDialog(
+                        "¿Cómo quieres llenarlo? \n"
+                        + "1.- Completo \n"
+                        + "2.- Indica la cantidad ");
+
+                eleccion = Integer.parseInt(opcionllenado);
+
+                switch (eleccion) {
+                    case 1:
+
+                        getChocolate().setCantidadActual(getChocolate().getCantidadMaxima());
+
+                        JOptionPane.showMessageDialog(null, "El depósito de " + getChocolate().getContenido() + " se ha llenado por completo");
+
+                        break;
+                    case 2:
+
+                        indicaCantidad = JOptionPane.showInputDialog("Indica la cantidad: ");
+
+                        cantidadIndicada = Integer.parseInt(indicaCantidad);
+
+                        if (cantidadIndicada >= getChocolate().getCantidadMaxima() || (cantidadIndicada + getChocolate().getCantidadActual()) >= getChocolate().getCantidadMaxima()) {
+                            getChocolate().setCantidadActual(getChocolate().getCantidadMaxima());
+                            JOptionPane.showMessageDialog(null, "La cantidad de " + getChocolate().getContenido() + " es de: " + getChocolate().getCantidadActual());
+                        } else {
+
+                            getChocolate().setCantidadActual(cantidadIndicada + getChocolate().getCantidadActual());
+                            JOptionPane.showMessageDialog(null, "La cantidad de " + getChocolate().getContenido() + " es de: " + getChocolate().getCantidadActual());
+                        }
+
+                        break;
+                }
+
+                break;
+
+        }
+
+    }
 }
