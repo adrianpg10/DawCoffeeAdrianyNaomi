@@ -65,6 +65,20 @@ public class Cafetera {
         contador++;
     }
     
+    //Método servirCafeLargo que actualiza el estado de los depósitos
+    public void servirCafeLargo(Deposito cafe, Deposito leche){
+        cafe.setCantidadActual(cafe.getCantidadActual() - 80);
+        leche.setCantidadActual(leche.getCantidadActual() - 100);
+        contador++;
+    }
+    
+    //Método servirCafeCortado que actualiza el estado de los depósitos
+    public void servirCafeCortado(Deposito cafe, Deposito leche){
+        cafe.setCantidadActual(cafe.getCantidadActual() - 150);
+        leche.setCantidadActual(leche.getCantidadActual() - 30);
+        contador++;
+    }
+    
     //Métodos getters y setters
     public double getSaldoCliente() {
         return saldoCliente;
