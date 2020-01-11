@@ -49,36 +49,43 @@ public class Cafetera {
         this.agua = agua;
         this.azucar = azucar;
     }
-    
+
     //Método servirCafeSolo que actualiza el estado de los depósitos 
     //Nota: Un vaso 180 ml/gr - El café solo suele tener algo más de la mitad de la capacidad del vaso
-    public void servirCafeSolo(Deposito cafe, Deposito agua){
+    public void servirCafeSolo(Deposito cafe, Deposito agua) {
         cafe.setCantidadActual(cafe.getCantidadActual() - 50);
-        agua.setCantidadActual(agua.getCantidadActual()- 50);
+        agua.setCantidadActual(agua.getCantidadActual() - 50);
         contador++;
     }
-     
+
     //Método servirCafeLeche que actualiza el estado de los depósitos
-    public void servirCafeLeche(Deposito cafe, Deposito leche){
+    public void servirCafeLeche(Deposito cafe, Deposito leche) {
         cafe.setCantidadActual(cafe.getCantidadActual() - 60);
         leche.setCantidadActual(leche.getCantidadActual() - 120);
         contador++;
     }
-    
+
     //Método servirCafeLargo que actualiza el estado de los depósitos
-    public void servirCafeLargo(Deposito cafe, Deposito leche){
+    public void servirCafeLargo(Deposito cafe, Deposito leche) {
         cafe.setCantidadActual(cafe.getCantidadActual() - 80);
         leche.setCantidadActual(leche.getCantidadActual() - 100);
         contador++;
     }
-    
+
     //Método servirCafeCortado que actualiza el estado de los depósitos
-    public void servirCafeCortado(Deposito cafe, Deposito leche){
+    public void servirCafeCortado(Deposito cafe, Deposito leche) {
         cafe.setCantidadActual(cafe.getCantidadActual() - 150);
         leche.setCantidadActual(leche.getCantidadActual() - 30);
         contador++;
     }
     
+    //Método servirChocolate que actualiza el estado de los depósitos
+    public void servirChocolate(Deposito chocolate, Deposito leche) {
+        chocolate.setCantidadActual(chocolate.getCantidadActual() - 80);
+        leche.setCantidadActual(leche.getCantidadActual() - 100);
+        contador++;
+    }
+
     //Métodos getters y setters
     public double getSaldoCliente() {
         return saldoCliente;
