@@ -30,16 +30,16 @@ public class Cafetera {
         this.saldoCliente = 5;
         this.saldoAcumulado = 200;
         this.numVentasRealizadas = 195;
-        this.leche = new Deposito("leche", 1000, 300, 2500);
-        this.cafe = new Deposito("cafe", 3000, 500, 2000);
-        this.chocolate = new Deposito("chocolate", 1000, 300, 900);
-        this.agua = new Deposito("agua", 2000, 500, 1500);
-        this.azucar = new Deposito("azucar", 1000, 200, 600);
+        this.leche = new Deposito("leche", 1000, 300, 800, false);
+        this.cafe = new Deposito("cafe", 2000, 500, 1800, false);
+        this.chocolate = new Deposito("chocolate", 1000, 300, 900, false);
+        this.agua = new Deposito("agua", 2000, 500, 1500, false);
+        this.azucar = new Deposito("azucar", 1000, 200, 600, false);
         this.admin = new Usuario();
     }
 
     //Constructor parametrizado
-    public Cafetera(double saldoCliente, double saldoAcumulado, int numVentasRealizadas, Deposito leche, Deposito cafe, Deposito chocolate, Deposito agua, Deposito azucar) {
+    public Cafetera(double saldoCliente, double saldoAcumulado, int numVentasRealizadas, Deposito leche, Deposito cafe, Deposito chocolate, Deposito agua, Deposito azucar, Usuario admin) {
         this.saldoCliente = saldoCliente;
         this.saldoAcumulado = saldoAcumulado;
         this.numVentasRealizadas = numVentasRealizadas;
