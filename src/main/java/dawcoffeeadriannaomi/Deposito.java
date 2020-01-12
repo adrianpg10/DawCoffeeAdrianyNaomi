@@ -10,7 +10,7 @@ package dawcoffeeadriannaomi;
  * @author adrip
  */
 public class Deposito {
-    
+
     //Añadimos atributos de la clase Depósito
     private String contenido;
     private double cantidadMaxima;
@@ -19,12 +19,22 @@ public class Deposito {
     private boolean reserva;
 
     //Añadimos Constructor parametrizado
-    public Deposito(String contenido, double cantidadMaxima, double cantidadUmbral, double cantidadActual) {
+    public Deposito(String contenido, double cantidadMaxima, double cantidadUmbral, double cantidadActual, boolean reserva) {
         this.contenido = contenido;
         this.cantidadMaxima = cantidadMaxima;
         this.cantidadUmbral = cantidadUmbral;
         this.cantidadActual = cantidadActual;
-        
+        this.reserva = reserva;
+
+        //Controlamos que no se pueda crear una cafetera con la cantidad actual superior a la cantidad máxima
+        if (this.cantidadActual > this.cantidadMaxima) {
+            this.cantidadActual = this.cantidadMaxima;
+        }
+
+        //Controlamos que la cantidad umbral no sea superior a la cantidad máxima
+        if (this.cantidadUmbral > this.cantidadMaxima) {
+            this.cantidadUmbral = this.cantidadMaxima / 2;
+        }
     }
 
     //Constructor por defecto
@@ -34,9 +44,7 @@ public class Deposito {
         this.cantidadUmbral = 20;
         this.cantidadActual = 0;
         this.reserva = true;
-
     }
-
 
     //Añadimos Getters y Setters
     public String getContenido() {
@@ -69,16 +77,24 @@ public class Deposito {
 
     public void setCantidadUmbral(double cantidadUmbral) {
         this.cantidadUmbral = cantidadUmbral;
+
+        if (this.cantidadUmbral > this.cantidadMaxima) {
+            this.cantidadUmbral = this.cantidadMaxima / 2;
+        }
     }
 
     public void setCantidadActual(double cantidadActual) {
         this.cantidadActual = cantidadActual;
+
+        if (this.cantidadActual > this.cantidadMaxima) {
+            this.cantidadActual = this.cantidadMaxima;
+        }
     }
 
     public void setReserva(boolean reserva) {
         this.reserva = reserva;
     }
-    
+
     //Método toString
     @Override
     public String toString() {
