@@ -52,47 +52,47 @@ public class Cafetera {
 
     //Método servirCafeSolo que actualiza el estado de los depósitos 
     //Nota: Un vaso 180 ml/gr - El café solo suele tener algo más de la mitad de la capacidad del vaso
-    public void servirCafeSolo(Deposito cafe, Deposito agua) {
+    public void servirCafeSolo() {
         cafe.setCantidadActual(cafe.getCantidadActual() - 50);
         agua.setCantidadActual(agua.getCantidadActual() - 50);
         contador++;
     }
 
     //Método servirCafeLeche que actualiza el estado de los depósitos
-    public void servirCafeLeche(Deposito cafe, Deposito leche) {
+    public void servirCafeLeche() {
         cafe.setCantidadActual(cafe.getCantidadActual() - 60);
         leche.setCantidadActual(leche.getCantidadActual() - 120);
         contador++;
     }
 
     //Método servirCafeLargo que actualiza el estado de los depósitos
-    public void servirCafeLargo(Deposito cafe, Deposito leche) {
+    public void servirCafeLargo() {
         cafe.setCantidadActual(cafe.getCantidadActual() - 80);
         leche.setCantidadActual(leche.getCantidadActual() - 100);
         contador++;
     }
 
     //Método servirCafeCortado que actualiza el estado de los depósitos
-    public void servirCafeCortado(Deposito cafe, Deposito leche) {
+    public void servirCafeCortado() {
         cafe.setCantidadActual(cafe.getCantidadActual() - 150);
         leche.setCantidadActual(leche.getCantidadActual() - 30);
         contador++;
     }
 
     //Método servirChocolate que actualiza el estado de los depósitos
-    public void servirChocolate(Deposito chocolate, Deposito leche) {
+    public void servirChocolate() {
         chocolate.setCantidadActual(chocolate.getCantidadActual() - 80);
         leche.setCantidadActual(leche.getCantidadActual() - 100);
         contador++;
     }
 
     //Método servirLeche (en el menú controlaremos que sea caliete o fría)
-    public void servirLeche(Deposito Leche) {
+    public void servirLeche() {
         leche.setCantidadActual(leche.getCantidadActual() - 180);
     }
 
     //Método servirAzucar que sirve una o dos cucharadas según elija el cliente
-    public void servirAzucar(Deposito azucar, int numeroCucharadas) {
+    public void servirAzucar(int numeroCucharadas) {
         if (numeroCucharadas == 1) {
             azucar.setCantidadActual(azucar.getCantidadActual() - 5);
         } else {
