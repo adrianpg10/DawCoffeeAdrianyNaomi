@@ -13,11 +13,10 @@ import javax.swing.JOptionPane;
  */
 public class Menu {
 
-    public static void Menu() {
+    public static void Menu(Cafetera cafetera) {
 
         int opcionElegida;
         boolean repetir = true;
-
         //Bucle Do-while para controlar que el programa se repite mientras el usuario no selecciones salir
         do {
             //Do-while para controlar que selecciona una opcion viable
@@ -54,6 +53,20 @@ public class Menu {
                     } while (!(opcionesVenta.equalsIgnoreCase("A1") || opcionesVenta.equalsIgnoreCase("A2") || opcionesVenta.equalsIgnoreCase("A3")
                             || opcionesVenta.equalsIgnoreCase("A4") || opcionesVenta.equalsIgnoreCase("B1") || opcionesVenta.equalsIgnoreCase("C1")
                             || opcionesVenta.equalsIgnoreCase("C2")));
+                    
+                    if(opcionesVenta.equalsIgnoreCase("A1")){
+                        cafetera.servirCafeSolo();
+                    }else if(opcionesVenta.equalsIgnoreCase("A2")){
+                        cafetera.servirCafeLargo();
+                    }else if(opcionesVenta.equalsIgnoreCase("A3")){
+                        cafetera.servirCafeLeche();
+                    }else if(opcionesVenta.equalsIgnoreCase("A4")){
+                        cafetera.servirCafeCortado();
+                    }else if(opcionesVenta.equalsIgnoreCase("B1")){
+                        cafetera.servirChocolate();
+                    }else{
+                        cafetera.servirLeche();  
+                    }
 
                     //Muestro los datos al usuario
                     JOptionPane.showMessageDialog(null, "[Daw Coffee]\n"
