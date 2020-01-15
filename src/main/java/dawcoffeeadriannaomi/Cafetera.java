@@ -25,6 +25,20 @@ public class Cafetera {
     private Usuario admin;
     private static int contador = 0; //Para calcular el número de ventas
 
+    //Constantes
+    private final double CANT_AGUAYCAFE_CAFESOLO = 50;
+    private final double CANT_CAFE_CAFELECHE = 60;
+    private final double CANT_LECHE_CAFELECHE = 120;
+    private final double CANT_CAFE_CAFELARGO = 80;
+    private final double CANT_LECHE_CAFELARGO_YCHOCOLATE = 100;
+    private final double CANT_CAFE_CAFECORTADO = 150;
+    private final double CANT_LECHE_CAFECORTADO = 30;
+    private final double CANT_CHOCOLATE = 80;
+    private final double CANT_LECHE = 80;
+    private final double CANT_AZUCAR = 5;
+    
+    private final double PRECIO_PRODUCT_MINIMO = 0.50;
+
     //Constructor por defecto
     public Cafetera() { //Medida gramo
         this.saldoCliente = 5;
@@ -53,50 +67,50 @@ public class Cafetera {
     //Método servirCafeSolo que actualiza el estado de los depósitos 
     //Nota: Un vaso 180 ml/gr - El café solo suele tener algo más de la mitad de la capacidad del vaso
     public void servirCafeSolo() {
-        cafe.setCantidadActual(cafe.getCantidadActual() - 50);
-        agua.setCantidadActual(agua.getCantidadActual() - 50);
+        cafe.setCantidadActual(cafe.getCantidadActual() - CANT_AGUAYCAFE_CAFESOLO);
+        agua.setCantidadActual(agua.getCantidadActual() - CANT_AGUAYCAFE_CAFESOLO);
         contador++;
     }
 
     //Método servirCafeLeche que actualiza el estado de los depósitos
     public void servirCafeLeche() {
-        cafe.setCantidadActual(cafe.getCantidadActual() - 60);
-        leche.setCantidadActual(leche.getCantidadActual() - 120);
+        cafe.setCantidadActual(cafe.getCantidadActual() - CANT_CAFE_CAFELECHE);
+        leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CAFELECHE);
         contador++;
     }
 
     //Método servirCafeLargo que actualiza el estado de los depósitos
     public void servirCafeLargo() {
-        cafe.setCantidadActual(cafe.getCantidadActual() - 80);
-        leche.setCantidadActual(leche.getCantidadActual() - 100);
+        cafe.setCantidadActual(cafe.getCantidadActual() - CANT_CAFE_CAFELARGO);
+        leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CAFELARGO_YCHOCOLATE);
         contador++;
     }
 
     //Método servirCafeCortado que actualiza el estado de los depósitos
     public void servirCafeCortado() {
-        cafe.setCantidadActual(cafe.getCantidadActual() - 150);
-        leche.setCantidadActual(leche.getCantidadActual() - 30);
+        cafe.setCantidadActual(cafe.getCantidadActual() - CANT_CAFE_CAFECORTADO);
+        leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CAFECORTADO);
         contador++;
     }
 
     //Método servirChocolate que actualiza el estado de los depósitos
     public void servirChocolate() {
-        chocolate.setCantidadActual(chocolate.getCantidadActual() - 80);
-        leche.setCantidadActual(leche.getCantidadActual() - 100);
+        chocolate.setCantidadActual(chocolate.getCantidadActual() - CANT_CHOCOLATE);
+        leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CAFELARGO_YCHOCOLATE);
         contador++;
     }
 
     //Método servirLeche (en el menú controlaremos que sea caliete o fría)
     public void servirLeche() {
-        leche.setCantidadActual(leche.getCantidadActual() - 180);
+        leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE);
     }
 
     //Método servirAzucar que sirve una o dos cucharadas según elija el cliente
     public void servirAzucar(int numeroCucharadas) {
         if (numeroCucharadas == 1) {
-            azucar.setCantidadActual(azucar.getCantidadActual() - 5);
+            azucar.setCantidadActual(azucar.getCantidadActual() - CANT_AZUCAR);
         } else {
-            azucar.setCantidadActual(azucar.getCantidadActual() - 10);
+            azucar.setCantidadActual(azucar.getCantidadActual() - CANT_AZUCAR * numeroCucharadas);
         }
     }
 
@@ -108,7 +122,7 @@ public class Cafetera {
     //Método saldoSuficiente devuelve un boolean, true si el dinero introducido por el cliente
     //es igual o superior al precio mínimo que se necesita para comprar un producto sino devuelve false
     public boolean saldoSuficiente() {
-        if (this.saldoCliente < 0.50) {
+        if (this.saldoCliente < PRECIO_PRODUCT_MINIMO) {
             return false;
         } else {
             return true;
