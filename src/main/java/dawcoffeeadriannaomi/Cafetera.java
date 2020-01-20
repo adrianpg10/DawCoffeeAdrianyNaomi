@@ -16,16 +16,18 @@ public class Cafetera {
     //Atributos
     private double saldoCliente; //Saldo actual del cliente
     private double saldoAcumulado; //Cantidad de dinero en la máquina
-    private int numVentasRealizadas;
     private Deposito leche;
     private Deposito cafe;
+    private Deposito cafeDescafeinado;
     private Deposito chocolate;
     private Deposito agua;
     private Deposito azucar;
+    private Deposito sacarina;
     private Usuario admin;
-    private static int contador = 0; //Para calcular el número de ventas
+    private static int numVentasRealizadas = 0; //Para calcular el número de ventas
 
     //Constantes
+    //Las cantidades serán las mismas para el café normal y el descafeinado
     private final double CANT_AGUAYCAFE_CAFESOLO = 50;
     private final double CANT_CAFE_CAFELECHE = 60;
     private final double CANT_LECHE_CAFELECHE = 120;
@@ -36,73 +38,105 @@ public class Cafetera {
     private final double CANT_CHOCOLATE = 80;
     private final double CANT_LECHE = 80;
     private final double CANT_AZUCAR = 5;
-    
+    private final double CANT_SACARINA = 3;
+
     private final double PRECIO_PRODUCT_MINIMO = 0.50;
 
     //Constructor por defecto
-    public Cafetera() { //Medida gramo
+    public Cafetera() {
         this.saldoCliente = 5;
         this.saldoAcumulado = 200;
-        this.numVentasRealizadas = 195;
-        this.leche = new Deposito("leche", 1000, 300, 800, false);
-        this.cafe = new Deposito("cafe", 2000, 500, 1800, false);
-        this.chocolate = new Deposito("chocolate", 1000, 300, 900, false);
-        this.agua = new Deposito("agua", 2000, 500, 1500, false);
-        this.azucar = new Deposito("azucar", 1000, 200, 600, false);
+        this.leche = new Deposito("leche", 1000, 800, false);
+        this.cafe = new Deposito("café", 2000, 1800, false);
+        this.chocolate = new Deposito("chocolate", 1000, 900, false);
+        this.agua = new Deposito("agua", 2000, 1500, false);
+        this.azucar = new Deposito("azúcar", 1000, 600, false);
+        this.sacarina = new Deposito("agua", 500, 200, false);
         this.admin = new Usuario();
     }
 
     //Constructor parametrizado
-    public Cafetera(double saldoCliente, double saldoAcumulado, int numVentasRealizadas, Deposito leche, Deposito cafe, Deposito chocolate, Deposito agua, Deposito azucar, Usuario admin) {
+    public Cafetera(double saldoCliente, double saldoAcumulado, Deposito leche, Deposito cafe, Deposito cafeDescafeinado, Deposito chocolate, Deposito agua, Deposito azucar, Deposito sacarina, Usuario admin) {
         this.saldoCliente = saldoCliente;
         this.saldoAcumulado = saldoAcumulado;
-        this.numVentasRealizadas = numVentasRealizadas;
         this.leche = leche;
         this.cafe = cafe;
+        this.cafeDescafeinado = cafeDescafeinado;
         this.chocolate = chocolate;
         this.agua = agua;
         this.azucar = azucar;
+        this.sacarina = sacarina;
+        this.admin = admin;
     }
 
     //Método servirCafeSolo que actualiza el estado de los depósitos 
-    //Nota: Un vaso 180 ml/gr - El café solo suele tener algo más de la mitad de la capacidad del vaso
+    //Nota: Un vaso 180 ml/gr
     public void servirCafeSolo() {
         cafe.setCantidadActual(cafe.getCantidadActual() - CANT_AGUAYCAFE_CAFESOLO);
         agua.setCantidadActual(agua.getCantidadActual() - CANT_AGUAYCAFE_CAFESOLO);
-        contador++;
+        numVentasRealizadas++;
+    }
+    
+    //Método servirCafeSoloDescafeinado que actualiza el estado de los depósitos
+    public void servirCafeSoloDescafeinado() {
+        cafeDescafeinado.setCantidadActual(cafeDescafeinado.getCantidadActual() - CANT_AGUAYCAFE_CAFESOLO);
+        agua.setCantidadActual(agua.getCantidadActual() - CANT_AGUAYCAFE_CAFESOLO);
+        numVentasRealizadas++;
     }
 
     //Método servirCafeLeche que actualiza el estado de los depósitos
     public void servirCafeLeche() {
         cafe.setCantidadActual(cafe.getCantidadActual() - CANT_CAFE_CAFELECHE);
         leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CAFELECHE);
-        contador++;
+        numVentasRealizadas++;
+    }
+    
+    //Método servirCafeLecheDescafeinado que actualiza el estado de los depósitos
+    public void servirCafeLecheDescafeinado() {
+        cafeDescafeinado.setCantidadActual(cafeDescafeinado.getCantidadActual() - CANT_CAFE_CAFELECHE);
+        leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CAFELECHE);
+        numVentasRealizadas++;
     }
 
     //Método servirCafeLargo que actualiza el estado de los depósitos
     public void servirCafeLargo() {
         cafe.setCantidadActual(cafe.getCantidadActual() - CANT_CAFE_CAFELARGO);
         leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CAFELARGO_YCHOCOLATE);
-        contador++;
+        numVentasRealizadas++;
+    }
+    
+    //Método servirCafeLargoDescafeinado que actualiza el estado de los depósitos
+    public void servirCafeLargoDescafeinado() {
+        cafeDescafeinado.setCantidadActual(cafeDescafeinado.getCantidadActual() - CANT_CAFE_CAFELARGO);
+        leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CAFELARGO_YCHOCOLATE);
+        numVentasRealizadas++;
     }
 
     //Método servirCafeCortado que actualiza el estado de los depósitos
     public void servirCafeCortado() {
         cafe.setCantidadActual(cafe.getCantidadActual() - CANT_CAFE_CAFECORTADO);
         leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CAFECORTADO);
-        contador++;
+        numVentasRealizadas++;
+    }
+    
+    //Método servirCafeCortadoDescafeinado que actualiza el estado de los depósitos
+    public void servirCafeCortadoDescafeinado() {
+        cafeDescafeinado.setCantidadActual(cafeDescafeinado.getCantidadActual() - CANT_CAFE_CAFECORTADO);
+        leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CAFECORTADO);
+        numVentasRealizadas++;
     }
 
     //Método servirChocolate que actualiza el estado de los depósitos
     public void servirChocolate() {
         chocolate.setCantidadActual(chocolate.getCantidadActual() - CANT_CHOCOLATE);
         leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CAFELARGO_YCHOCOLATE);
-        contador++;
+        numVentasRealizadas++;
     }
 
     //Método servirLeche (en el menú controlaremos que sea caliete o fría)
     public void servirLeche() {
         leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE);
+        numVentasRealizadas++;
     }
 
     //Método servirAzucar que sirve una o dos cucharadas según elija el cliente
@@ -111,6 +145,15 @@ public class Cafetera {
             azucar.setCantidadActual(azucar.getCantidadActual() - CANT_AZUCAR);
         } else {
             azucar.setCantidadActual(azucar.getCantidadActual() - CANT_AZUCAR * numeroCucharadas);
+        }
+    }
+    
+    //Método servirSacarina que sirve una o dos cucharadas según elija el cliente
+    public void servirSacarina(int numeroCucharadas) {
+        if (numeroCucharadas == 1) {
+            sacarina.setCantidadActual(sacarina.getCantidadActual() - CANT_AZUCAR);
+        } else {
+            sacarina.setCantidadActual(sacarina.getCantidadActual() - CANT_SACARINA * numeroCucharadas);
         }
     }
 
