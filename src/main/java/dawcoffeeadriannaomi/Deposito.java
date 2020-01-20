@@ -19,29 +19,24 @@ public class Deposito {
     private boolean reserva;
 
     //Añadimos Constructor parametrizado
-    public Deposito(String contenido, double cantidadMaxima, double cantidadUmbral, double cantidadActual, boolean reserva) {
+    public Deposito(String contenido, double cantidadMaxima, double cantidadActual, boolean reserva) {
         this.contenido = contenido;
         this.cantidadMaxima = cantidadMaxima;
-        this.cantidadUmbral = cantidadUmbral;
+        //La cantidad umbral será la mitad de la capacidad total de la cafetera
+        this.cantidadUmbral = cantidadMaxima / 2;
         this.cantidadActual = cantidadActual;
+        //La cantidad actual nunca podrá ser mayor que la cantidad máxima de la cafetera
+        if (cantidadActual > cantidadMaxima) {
+            this.cantidadActual = cantidadMaxima;
+        }
         this.reserva = reserva;
-
-        //Controlamos que no se pueda crear una cafetera con la cantidad actual superior a la cantidad máxima
-        if (this.cantidadActual > this.cantidadMaxima) {
-            this.cantidadActual = this.cantidadMaxima;
-        }
-
-        //Controlamos que la cantidad umbral no sea superior a la cantidad máxima
-        if (this.cantidadUmbral > this.cantidadMaxima) {
-            this.cantidadUmbral = this.cantidadMaxima / 2;
-        }
     }
 
     //Constructor por defecto
     public Deposito() {
-        this.contenido = "Nueva";
-        this.cantidadMaxima = 100;
-        this.cantidadUmbral = 20;
+        this.contenido = "Nuevo";
+        this.cantidadMaxima = 1000;
+        this.cantidadUmbral = 500;
         this.cantidadActual = 0;
         this.reserva = true;
     }
@@ -75,18 +70,10 @@ public class Deposito {
         this.cantidadMaxima = cantidadMaxima;
     }
 
-    public void setCantidadUmbral(double cantidadUmbral) {
-        this.cantidadUmbral = cantidadUmbral;
-
-        if (this.cantidadUmbral > this.cantidadMaxima) {
-            this.cantidadUmbral = this.cantidadMaxima / 2;
-        }
-    }
-
     public void setCantidadActual(double cantidadActual) {
         this.cantidadActual = cantidadActual;
 
-        if (this.cantidadActual > this.cantidadMaxima) {
+        if (cantidadActual > this.cantidadMaxima) {
             this.cantidadActual = this.cantidadMaxima;
         }
     }
