@@ -87,4 +87,12 @@ public class Deposito {
     public String toString() {
         return "Deposito{" + "contenido=" + contenido + ", cantidadMaxima=" + cantidadMaxima + ", cantidadUmbral=" + cantidadUmbral + ", cantidadActual=" + cantidadActual + '}';
     }
+
+    //Método para rellenar completamente el depósito
+    
+    public void rellenarCompleto() {
+
+        this.cantidadActual = this.cantidadMaxima;
+
+    }
 }
