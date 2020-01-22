@@ -76,7 +76,7 @@ public class Cafetera {
         agua.setCantidadActual(agua.getCantidadActual() - CANT_AGUAYCAFE_CAFESOLO);
         numVentasRealizadas++;
     }
-    
+
     //Método servirCafeSoloDescafeinado que actualiza el estado de los depósitos
     public void servirCafeSoloDescafeinado() {
         cafeDescafeinado.setCantidadActual(cafeDescafeinado.getCantidadActual() - CANT_AGUAYCAFE_CAFESOLO);
@@ -90,7 +90,7 @@ public class Cafetera {
         leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CAFELECHE);
         numVentasRealizadas++;
     }
-    
+
     //Método servirCafeLecheDescafeinado que actualiza el estado de los depósitos
     public void servirCafeLecheDescafeinado() {
         cafeDescafeinado.setCantidadActual(cafeDescafeinado.getCantidadActual() - CANT_CAFE_CAFELECHE);
@@ -104,7 +104,7 @@ public class Cafetera {
         leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CAFELARGO_YCHOCOLATE);
         numVentasRealizadas++;
     }
-    
+
     //Método servirCafeLargoDescafeinado que actualiza el estado de los depósitos
     public void servirCafeLargoDescafeinado() {
         cafeDescafeinado.setCantidadActual(cafeDescafeinado.getCantidadActual() - CANT_CAFE_CAFELARGO);
@@ -118,7 +118,7 @@ public class Cafetera {
         leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CAFECORTADO);
         numVentasRealizadas++;
     }
-    
+
     //Método servirCafeCortadoDescafeinado que actualiza el estado de los depósitos
     public void servirCafeCortadoDescafeinado() {
         cafeDescafeinado.setCantidadActual(cafeDescafeinado.getCantidadActual() - CANT_CAFE_CAFECORTADO);
@@ -147,7 +147,7 @@ public class Cafetera {
             azucar.setCantidadActual(azucar.getCantidadActual() - CANT_AZUCAR * numeroCucharadas);
         }
     }
-    
+
     //Método servirSacarina que sirve una o dos cucharadas según elija el cliente
     public void servirSacarina(int numeroCucharadas) {
         if (numeroCucharadas == 1) {
@@ -285,34 +285,15 @@ public class Cafetera {
     //Método que comprueba el estado general de los depósitos de la cafetera.
     public void comprobarEstadoGeneral() {
 
-        JOptionPane.showMessageDialog(null, " Deposito de:  " + getAgua().getContenido() + "\n "
-                + "Cantidad Máxima: " + getAgua().getCantidadMaxima() + "\n "
-                + "Cantidad Umbral: " + getAgua().getCantidadUmbral() + "\n "
-                + "Cantidad Actual: " + getAgua().getCantidadActual());
-
-        JOptionPane.showMessageDialog(null, " Deposito de:  " + getCafe().getContenido() + "\n "
-                + "Cantidad Máxima: " + getCafe().getCantidadMaxima() + "\n "
-                + "Cantidad Umbral: " + getCafe().getCantidadUmbral() + "\n "
-                + "Cantidad Actual: " + getCafe().getCantidadActual());
-
-        JOptionPane.showMessageDialog(null, " Deposito de:  " + getLeche().getContenido() + "\n "
-                + "Cantidad Máxima: " + getLeche().getCantidadMaxima() + "\n "
-                + "Cantidad Umbral: " + getLeche().getCantidadUmbral() + "\n "
-                + "Cantidad Actual: " + getLeche().getCantidadActual());
-
-        JOptionPane.showMessageDialog(null, " Deposito de:  " + getAzucar().getContenido() + "\n "
-                + "Cantidad Máxima: " + getAzucar().getCantidadMaxima() + "\n "
-                + "Cantidad Umbral: " + getAzucar().getCantidadUmbral() + "\n "
-                + "Cantidad Actual: " + getAzucar().getCantidadActual());
-
-        JOptionPane.showMessageDialog(null, " Deposito de:  " + getChocolate().getContenido() + "\n "
-                + "Cantidad Máxima: " + getChocolate().getCantidadMaxima() + "\n "
-                + "Cantidad Umbral: " + getChocolate().getCantidadUmbral() + "\n "
-                + "Cantidad Actual: " + getChocolate().getCantidadActual());
-
-        JOptionPane.showMessageDialog(null, " Cuenta del Administrador:  " + "\n "
-                + "Usuario: " + getAdmin().getUsuario() + "\n "
-                + "Contraseña: " + getAdmin().getPassword() + "\n ");
+        JOptionPane.showMessageDialog(null, agua.toString() + "\n"
+                + cafe.toString() + "\n"
+                + leche.toString() + "\n"
+                + chocolate.toString() + "\n"
+                + azucar.toString() + "\n"
+                + sacarina.toString() + "\n"
+                + cafeDescafeinado.toString() + "\n"
+                + admin.toString()
+        );
 
     }
 
