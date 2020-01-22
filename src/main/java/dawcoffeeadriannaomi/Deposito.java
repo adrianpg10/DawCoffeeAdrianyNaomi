@@ -5,6 +5,8 @@
  */
 package dawcoffeeadriannaomi;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author adrip
@@ -89,10 +91,22 @@ public class Deposito {
     }
 
     //Método para rellenar completamente el depósito
-    
-    public void rellenarCompleto() {
+    public void rellenarDeposito() {
 
         this.cantidadActual = this.cantidadMaxima;
 
     }
+
+    //Método rellenar cantidad indicada
+    public void rellenarDeposito(double cantidad) {
+
+        if (cantidad >= this.cantidadMaxima || (cantidad + this.cantidadActual) >= this.cantidadMaxima) {
+            this.cantidadActual = this.cantidadMaxima;
+        } else {
+
+            this.cantidadActual = cantidad + this.cantidadActual;
+        }
+
+    }
+
 }
