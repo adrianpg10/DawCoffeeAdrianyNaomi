@@ -87,7 +87,7 @@ public class Deposito {
     //Método toString
     @Override
     public String toString() {
-        return "Deposito{" + "contenido=" + contenido + ", cantidadMaxima=" + cantidadMaxima + ", cantidadUmbral=" + cantidadUmbral + ", cantidadActual=" + cantidadActual + '}';
+        return "Deposito: " + contenido + "\n -CantidadMaxima: " + cantidadMaxima + "g" + "\n -CantidadUmbral: " + cantidadUmbral + "g" + "\n -CantidadActual: " + cantidadActual + "g";
     }
 
     //Método para rellenar completamente el depósito
