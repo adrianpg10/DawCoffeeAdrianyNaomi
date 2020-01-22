@@ -10,7 +10,7 @@ package dawcoffeeadriannaomi;
  * @author adrip
  */
 public class Usuario {
-  
+
 //Atributos 
     private String usuario;
     private String password;
@@ -47,7 +47,7 @@ public class Usuario {
 //toString
     @Override
     public String toString() {
-        return "Usuario{" + "usuario=" + usuario + ", password=" + password + '}';
+        return "Usuarios: " +"\n -Usuario: " +usuario + "\n -Contraseña: " + password;
     }
-  
+
 }
