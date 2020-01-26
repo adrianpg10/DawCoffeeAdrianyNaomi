@@ -29,14 +29,19 @@ public class Cafetera {
     //Constantes
     //Las cantidades serán las mismas para el café normal y el descafeinado
     private final double CANT_AGUAYCAFE_CAFESOLO = 50;
-    private final double CANT_CAFE_CAFELECHE = 60;
-    private final double CANT_LECHE_CAFELECHE = 120;
-    private final double CANT_CAFE_CAFELARGO = 80;
-    private final double CANT_LECHE_CAFELARGO_YCHOCOLATE = 100;
-    private final double CANT_CAFE_CAFECORTADO = 150;
+    private final double CANT_CAFE_CAFELECHE = 40;
+    private final double CANT_LECHE_CAFELECHE = 40;
+     private final double CANT_AGUA_CAFELECHE = 100;
+    private final double CANT_CAFE_CAFELARGO = 50;
+    private final double CANT_LECHE_CAFELARGO = 60;
+    private final double CANT_AGUA_CAFELARGO = 70;
+    private final double CANT_CAFE_CAFECORTADO = 60;
     private final double CANT_LECHE_CAFECORTADO = 30;
-    private final double CANT_CHOCOLATE = 80;
-    private final double CANT_LECHE = 80;
+    private final double CANT_AGUA_CAFECORTADO = 90;
+    private final double CANT_CHOCOLATE = 30;
+    private final double CANT_LECHE_CHOCOLATE = 30;
+    private final double CANT_LECHE = 60;
+    private final double CANT_AGUA_GENERAL = 120;
     private final double CANT_AZUCAR = 5;
     private final double CANT_SACARINA = 3;
 
@@ -88,6 +93,7 @@ public class Cafetera {
     public void servirCafeLeche() {
         cafe.setCantidadActual(cafe.getCantidadActual() - CANT_CAFE_CAFELECHE);
         leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CAFELECHE);
+        agua.setCantidadActual(agua.getCantidadActual() - CANT_AGUA_CAFELECHE);
         numVentasRealizadas++;
     }
 
@@ -95,20 +101,23 @@ public class Cafetera {
     public void servirCafeLecheDescafeinado() {
         cafeDescafeinado.setCantidadActual(cafeDescafeinado.getCantidadActual() - CANT_CAFE_CAFELECHE);
         leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CAFELECHE);
+        agua.setCantidadActual(agua.getCantidadActual() - CANT_AGUA_CAFELECHE);
         numVentasRealizadas++;
     }
 
     //Método servirCafeLargo que actualiza el estado de los depósitos
     public void servirCafeLargo() {
         cafe.setCantidadActual(cafe.getCantidadActual() - CANT_CAFE_CAFELARGO);
-        leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CAFELARGO_YCHOCOLATE);
+        leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CAFELARGO);
+        agua.setCantidadActual(agua.getCantidadActual() - CANT_AGUA_CAFELARGO);
         numVentasRealizadas++;
     }
 
     //Método servirCafeLargoDescafeinado que actualiza el estado de los depósitos
     public void servirCafeLargoDescafeinado() {
         cafeDescafeinado.setCantidadActual(cafeDescafeinado.getCantidadActual() - CANT_CAFE_CAFELARGO);
-        leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CAFELARGO_YCHOCOLATE);
+        leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CAFELARGO);
+        agua.setCantidadActual(agua.getCantidadActual() - CANT_AGUA_CAFELARGO);
         numVentasRealizadas++;
     }
 
@@ -116,6 +125,7 @@ public class Cafetera {
     public void servirCafeCortado() {
         cafe.setCantidadActual(cafe.getCantidadActual() - CANT_CAFE_CAFECORTADO);
         leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CAFECORTADO);
+        agua.setCantidadActual(agua.getCantidadActual() - CANT_AGUA_GENERAL);
         numVentasRealizadas++;
     }
 
@@ -123,19 +133,22 @@ public class Cafetera {
     public void servirCafeCortadoDescafeinado() {
         cafeDescafeinado.setCantidadActual(cafeDescafeinado.getCantidadActual() - CANT_CAFE_CAFECORTADO);
         leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CAFECORTADO);
+        agua.setCantidadActual(agua.getCantidadActual() - CANT_AGUA_GENERAL);
         numVentasRealizadas++;
     }
 
     //Método servirChocolate que actualiza el estado de los depósitos
     public void servirChocolate() {
         chocolate.setCantidadActual(chocolate.getCantidadActual() - CANT_CHOCOLATE);
-        leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CAFELARGO_YCHOCOLATE);
+        leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CHOCOLATE);
+        agua.setCantidadActual(agua.getCantidadActual() - CANT_AGUA_GENERAL);
         numVentasRealizadas++;
     }
 
     //Método servirLeche (en el menú controlaremos que sea caliete o fría)
     public void servirLeche() {
         leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE);
+        agua.setCantidadActual(agua.getCantidadActual() - CANT_AGUA_GENERAL);
         numVentasRealizadas++;
     }
 
