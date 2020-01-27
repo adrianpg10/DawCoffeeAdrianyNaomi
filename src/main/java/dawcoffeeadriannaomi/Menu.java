@@ -148,11 +148,17 @@ public class Menu {
                 case 2:
                     //ADMINISTRACIÓN DE LA CAFETERA//
                     String opcionesAdministracion;
+                    String opcionllenado;
+                    int eleccion;
+                    String indicaCantidad;
+                    int cantidadIndicada;
 
                     //Utilizo un bucle do-while para controlar que el usuario elige una opción disponible
                     do {
                         //Muestro al usuario las opciones disponibles
-                        opcionesAdministracion = JOptionPane.showInputDialog("[Daw Coffee]\n"
+
+                        opcionesAdministracion = JOptionPane.showInputDialog(
+                                "[Daw Coffee]\n"
                                 + "Elije una opción para administrar la cafetera:\n"
                                 + "1.- Comprobar depósitos\n"
                                 + "2.- Comprobar estado general\n"
@@ -162,6 +168,222 @@ public class Menu {
                         //Paso el String "opcion" a int haciendo un parseo
                         opcionElegida = Integer.parseInt(opcionesAdministracion);
                     } while (opcionElegida < 1 || opcionElegida > 4);
+
+                    switch (opcionElegida) {
+                        case 1:
+
+                            cafetera.comprobarDepositos();
+
+                            break;
+                        case 2:
+                            cafetera.comprobarEstadoGeneral();
+                            break;
+                        case 3:
+                            cafetera.getNumVentasRealizadas();
+                            break;
+                        case 4:
+                            int opciondepositosElegida;
+                            String opciondepositos = JOptionPane.showInputDialog(
+                                    "Elije el deposito a rellenar: \n"
+                                    + "1.- Agua \n"
+                                    + "2.- Café \n"
+                                    + "3.- Leche \n"
+                                    + "4.- Azúcar \n"
+                                    + "5.- Chocolate\n"
+                                    + "6.- Sacarina\n"
+                                    + "7.- Café Descafeinado");
+
+                            //Paso el String "opcion" a int haciendo un parseo
+                            opciondepositosElegida = Integer.parseInt(opciondepositos);
+                            switch (opciondepositosElegida) {
+
+                                case 1:
+                                    opcionllenado = JOptionPane.showInputDialog(
+                                            "¿Cómo quieres llenarlo? \n"
+                                            + "1.- Completo \n"
+                                            + "2.- Indica la cantidad ");
+
+                                    eleccion = Integer.parseInt(opcionllenado);
+
+                                    switch (eleccion) {
+                                        case 1:
+
+                                            cafetera.getAgua().rellenarDeposito();
+
+                                            break;
+                                        case 2:
+                                            indicaCantidad = JOptionPane.showInputDialog("Indica la cantidad: ");
+
+                                            cantidadIndicada = Integer.parseInt(indicaCantidad);
+
+                                            cafetera.getAgua().rellenarDeposito(cantidadIndicada);
+                                            break;
+
+                                    }
+                                    break;
+                                case 2:
+
+                                    opcionllenado = JOptionPane.showInputDialog(
+                                            "¿Cómo quieres llenarlo? \n"
+                                            + "1.- Completo \n"
+                                            + "2.- Indica la cantidad ");
+
+                                    eleccion = Integer.parseInt(opcionllenado);
+
+                                    switch (eleccion) {
+                                        case 1:
+
+                                            cafetera.getCafe().rellenarDeposito();
+
+                                            break;
+                                        case 2:
+                                            indicaCantidad = JOptionPane.showInputDialog("Indica la cantidad: ");
+
+                                            cantidadIndicada = Integer.parseInt(indicaCantidad);
+
+                                            cafetera.getCafe().rellenarDeposito(cantidadIndicada);
+                                            break;
+
+                                    }
+
+                                    break;
+                                case 3:
+
+                                    opcionllenado = JOptionPane.showInputDialog(
+                                            "¿Cómo quieres llenarlo? \n"
+                                            + "1.- Completo \n"
+                                            + "2.- Indica la cantidad ");
+
+                                    eleccion = Integer.parseInt(opcionllenado);
+
+                                    switch (eleccion) {
+                                        case 1:
+
+                                            cafetera.getLeche().rellenarDeposito();
+
+                                            break;
+                                        case 2:
+                                            indicaCantidad = JOptionPane.showInputDialog("Indica la cantidad: ");
+
+                                            cantidadIndicada = Integer.parseInt(indicaCantidad);
+
+                                            cafetera.getLeche().rellenarDeposito(cantidadIndicada);
+                                            break;
+
+                                    }
+                                    break;
+
+                                case 4:
+
+                                    opcionllenado = JOptionPane.showInputDialog(
+                                            "¿Cómo quieres llenarlo? \n"
+                                            + "1.- Completo \n"
+                                            + "2.- Indica la cantidad ");
+
+                                    eleccion = Integer.parseInt(opcionllenado);
+
+                                    switch (eleccion) {
+                                        case 1:
+
+                                            cafetera.getAzucar().rellenarDeposito();
+
+                                            break;
+                                        case 2:
+                                            indicaCantidad = JOptionPane.showInputDialog("Indica la cantidad: ");
+
+                                            cantidadIndicada = Integer.parseInt(indicaCantidad);
+
+                                            cafetera.getAzucar().rellenarDeposito(cantidadIndicada);
+                                            break;
+
+                                    }
+
+                                    break;
+                                case 5:
+
+                                    opcionllenado = JOptionPane.showInputDialog(
+                                            "¿Cómo quieres llenarlo? \n"
+                                            + "1.- Completo \n"
+                                            + "2.- Indica la cantidad ");
+
+                                    eleccion = Integer.parseInt(opcionllenado);
+
+                                    switch (eleccion) {
+                                        case 1:
+
+                                            cafetera.getChocolate().rellenarDeposito();
+
+                                            break;
+                                        case 2:
+                                            indicaCantidad = JOptionPane.showInputDialog("Indica la cantidad: ");
+
+                                            cantidadIndicada = Integer.parseInt(indicaCantidad);
+
+                                            cafetera.getChocolate().rellenarDeposito(cantidadIndicada);
+                                            break;
+
+                                    }
+
+                                    break;
+
+                                case 6:
+
+                                    opcionllenado = JOptionPane.showInputDialog(
+                                            "¿Cómo quieres llenarlo? \n"
+                                            + "1.- Completo \n"
+                                            + "2.- Indica la cantidad ");
+
+                                    eleccion = Integer.parseInt(opcionllenado);
+
+                                    switch (eleccion) {
+                                        case 1:
+
+                                            cafetera.getSacarina().rellenarDeposito();
+
+                                            break;
+                                        case 2:
+                                            indicaCantidad = JOptionPane.showInputDialog("Indica la cantidad: ");
+
+                                            cantidadIndicada = Integer.parseInt(indicaCantidad);
+
+                                            cafetera.getSacarina().rellenarDeposito(cantidadIndicada);
+                                            break;
+
+                                    }
+
+                                    break;
+
+                                case 7:
+
+                                    opcionllenado = JOptionPane.showInputDialog(
+                                            "¿Cómo quieres llenarlo? \n"
+                                            + "1.- Completo \n"
+                                            + "2.- Indica la cantidad ");
+
+                                    eleccion = Integer.parseInt(opcionllenado);
+
+                                    switch (eleccion) {
+                                        case 1:
+
+                                            cafetera.getCafeDescafeinado().rellenarDeposito();
+
+                                            break;
+                                        case 2:
+                                            indicaCantidad = JOptionPane.showInputDialog("Indica la cantidad: ");
+
+                                            cantidadIndicada = Integer.parseInt(indicaCantidad);
+
+                                            cafetera.getCafeDescafeinado().rellenarDeposito(cantidadIndicada);
+                                            break;
+
+                                    }
+
+                                    break;
+
+                            }
+                            break;
+
+                    }
 
                     break;
 
