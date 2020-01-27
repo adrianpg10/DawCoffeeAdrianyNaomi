@@ -254,6 +254,23 @@ public class Cafetera {
         this.azucar = azucar;
     }
 
+    public Deposito getCafeDescafeinado() {
+        return cafeDescafeinado;
+    }
+
+    public void setCafeDescafeinado(Deposito cafeDescafeinado) {
+        this.cafeDescafeinado = cafeDescafeinado;
+    }
+
+    public Deposito getSacarina() {
+        return sacarina;
+    }
+
+    public void setSacarina(Deposito sacarina) {
+        this.sacarina = sacarina;
+    }
+
+    
     //Método toString
     @Override
     public String toString() {
