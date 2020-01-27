@@ -45,7 +45,7 @@ public class Cafetera {
     private final double CANT_AZUCAR = 5;
     private final double CANT_SACARINA = 3;
 
-    private final double PRECIO_PRODUCT_MINIMO = 0.50;
+    private final double PRECIO_PRODUCT_MINIMO = 0.5;
 
     //Constructor por defecto
     public Cafetera() {
@@ -177,8 +177,8 @@ public class Cafetera {
 
     //Método saldoSuficiente devuelve un boolean, true si el dinero introducido por el cliente
     //es igual o superior al precio mínimo que se necesita para comprar un producto sino devuelve false
-    public boolean saldoSuficiente() {
-        if (this.saldoCliente < PRECIO_PRODUCT_MINIMO) {
+    public boolean saldoSuficiente(double saldoIntroducido) {
+        if (saldoIntroducido < PRECIO_PRODUCT_MINIMO) {
             return false;
         } else {
             return true;
