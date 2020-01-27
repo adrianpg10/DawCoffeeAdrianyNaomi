@@ -146,6 +146,7 @@ public class Menu {
                     break;
 
                 case 2:
+
                     //ADMINISTRACIÓN DE LA CAFETERA//
                     String opcionesAdministracion;
                     String opcionllenado;
@@ -183,18 +184,22 @@ public class Menu {
                             break;
                         case 4:
                             int opciondepositosElegida;
-                            String opciondepositos = JOptionPane.showInputDialog(
-                                    "Elije el deposito a rellenar: \n"
-                                    + "1.- Agua \n"
-                                    + "2.- Café \n"
-                                    + "3.- Leche \n"
-                                    + "4.- Azúcar \n"
-                                    + "5.- Chocolate\n"
-                                    + "6.- Sacarina\n"
-                                    + "7.- Café Descafeinado");
+                            do {
 
-                            //Paso el String "opcion" a int haciendo un parseo
-                            opciondepositosElegida = Integer.parseInt(opciondepositos);
+                                String opciondepositos = JOptionPane.showInputDialog(
+                                        "Elije el deposito a rellenar: \n"
+                                        + "1.- Agua \n"
+                                        + "2.- Café \n"
+                                        + "3.- Leche \n"
+                                        + "4.- Azúcar \n"
+                                        + "5.- Chocolate\n"
+                                        + "6.- Sacarina\n"
+                                        + "7.- Café Descafeinado");
+
+                                //Paso el String "opcion" a int haciendo un parseo
+                                opciondepositosElegida = Integer.parseInt(opciondepositos);
+                            } while (opciondepositosElegida < 1 || opciondepositosElegida > 7);
+
                             switch (opciondepositosElegida) {
 
                                 case 1:
