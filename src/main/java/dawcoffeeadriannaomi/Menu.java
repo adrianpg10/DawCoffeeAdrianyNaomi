@@ -147,6 +147,16 @@ public class Menu {
 
                 case 2:
 
+                    String adminUsuario;
+                    String adminContrasenia;
+
+                    do {
+                        adminUsuario = JOptionPane.showInputDialog("User: ");
+
+                        adminContrasenia = JOptionPane.showInputDialog("Password: ");
+
+                    } while (!(adminUsuario.equals(cafetera.getAdmin().getUsuario()) && adminContrasenia.equals(cafetera.getAdmin().getPassword())));
+
                     //ADMINISTRACIÓN DE LA CAFETERA//
                     String opcionesAdministracion;
                     String opcionllenado;
