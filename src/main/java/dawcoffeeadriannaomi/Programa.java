@@ -14,7 +14,7 @@ public class Programa {
     public static void main(String[] args) {
 
         //Creo e instancio el usurio con acceso al panel de administración
-        Usuario administrador = new Usuario("adminCafeStoreZ5", "CZr4t89SDF");
+        Usuario administrador = new Usuario("admin", "adminDaw1");
 
         //Creación e instanciación de los componentes de la cafetera
         Deposito leche = new Deposito("leche", 1000, 1000, false);
@@ -24,13 +24,11 @@ public class Programa {
         Deposito agua = new Deposito("agua", 2000, 2000, false);
         Deposito azucar = new Deposito("azucar", 1000, 1000, false);
         Deposito sacarina = new Deposito("sacarina", 500, 500, false);
-        
+
         //Creo e instancio la cafetera
         Cafetera cafetera = new Cafetera(0, 0, leche, cafe, cafeDescafeinado, chocolate, agua, azucar, sacarina, administrador);
 
-        //Ejecuto el menú y le paso la cafetera
+        //Ejecuto el menú y le paso la cafetera que hemos creado
         Menu.Menu(cafetera);
-        
-        //System.out.println(cafetera.toString()); --Comprobación
     }
 }
