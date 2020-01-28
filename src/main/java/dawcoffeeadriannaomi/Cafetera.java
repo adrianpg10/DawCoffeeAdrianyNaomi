@@ -312,17 +312,12 @@ public class Cafetera {
     }
 
     //Método que comprueba el estado general de los depósitos de la cafetera.
-    public void comprobarEstadoGeneral() {
+    public String comprobarEstadoGeneral() {
 
-        JOptionPane.showMessageDialog(null, agua.toString() + "\n"
-                + cafe.toString() + "\n"
-                + leche.toString() + "\n"
-                + chocolate.toString() + "\n"
-                + azucar.toString() + "\n"
-                + sacarina.toString() + "\n"
-                + cafeDescafeinado.toString() + "\n"
-                + admin.toString()
-        );
+       
+        String cadena = agua.toString() + cafe.toString() + leche.toString() + chocolate.toString()
+                + azucar.toString() + sacarina.toString() + cafeDescafeinado.toString() + admin.toString();
+        return cadena;
 
     }
 
