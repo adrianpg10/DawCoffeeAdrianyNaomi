@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class Menu {
 
-    //Constantes
+    //Constantes con los precios de los productos
     private static final double PRECIO_CAFESOLO = 0.8;
     private static final double PRECIO_CAFELARGO = 0.9;
     private static final double PRECIO_CAFELECHE = 1.1;
@@ -25,9 +25,9 @@ public class Menu {
 
         int opcionElegida;
         boolean repetir = true;
-        //Bucle Do-while para controlar que el programa se repite mientras el usuario no selecciones salir
+        //Controlo que el Menú se repita mientras el usuario no selecciones salir del programa
         do {
-            //Do-while para controlar que selecciona una opcion viable
+            //Controlo que el usuario utiliza una opción válida
             do {
                 String opcionesMenu = JOptionPane.showInputDialog("[Daw Coffee]\n"
                         + "Elije una de las siguientes opciones:\n"
@@ -47,42 +47,43 @@ public class Menu {
                     //VENTA DE PRODUCTOS//
                     double saldoCliente;
                     do {
-                        //Le pido al usuario que introduzca el saldo
+                        //Mensaje para que el usuario introduzca el saldo
                         String saldo = JOptionPane.showInputDialog("[Daw Coffee]\n"
                                 + "Introduzca el dinero:");
 
                         //Paso de String a double
                         saldoCliente = Double.parseDouble(saldo);
+                        cafetera.setSaldoCliente(saldoCliente); //Cambio el saldo del cliente por el actual
 
-                        //Controlo con un if que el saldo sea suficiente para el producto mínimo
-                        if (cafetera.saldoSuficiente(saldoCliente)) { //Controlo que el saldo sea suficiente para realizar la compra
+                        //Controlo que el saldo introducido sea igual o superior al precio mínimo de los productos
+                        if (cafetera.getSaldoCliente() >= PRECIO_LECHE) {
                             String opcionesVenta;
                             String opcionAzucar;
                             String opcionCantAzucar;
-                            //Utilizo un bucle do-while para controlar que el usuario elige una opción disponible
-                            do {
-                                //Muestro al usuario las opciones disponibles
-                                opcionesVenta = JOptionPane.showInputDialog("[Daw Coffee]\n"
-                                        + "Elije una opción de nuestros productos:\n"
-                                        + "A1 - Café solo\n"
-                                        + "A2 - Café solo largo\n"
-                                        + "A3 - Café con leche\n"
-                                        + "A4 - Café cortado\n"
-                                        + "B1 - Café solo descafeinado\n"
-                                        + "B2 - Café solo largo descafeinado\n"
-                                        + "B3 - Café descafeinado con leche\n"
-                                        + "B4 - Café cortado descafeinado\n"
-                                        + "C1 - Chocolate\n"
-                                        + "D1 - Leche fría\n"
-                                        + "D2 - Leche caliente\n");
-                            } while (!(opcionesVenta.equalsIgnoreCase("A1") || opcionesVenta.equalsIgnoreCase("A2") || opcionesVenta.equalsIgnoreCase("A3")
-                                    || opcionesVenta.equalsIgnoreCase("A4") || opcionesVenta.equalsIgnoreCase("B1") || opcionesVenta.equalsIgnoreCase("B2")
-                                    || opcionesVenta.equalsIgnoreCase("B3") || opcionesVenta.equalsIgnoreCase("B4") || opcionesVenta.equalsIgnoreCase("C1")
-                                    || opcionesVenta.equalsIgnoreCase("D1") || opcionesVenta.equalsIgnoreCase("D2")));
-
                             boolean compra = false;
 
                             do {
+                                //Controlo que el usuario elige una opción válida
+                                do {
+                                    //Muestro al usuario los productos disponibles
+                                    opcionesVenta = JOptionPane.showInputDialog("[Daw Coffee]\n"
+                                            + "Elije una opción de nuestros productos:\n"
+                                            + "A1 - Café solo\n"
+                                            + "A2 - Café solo largo\n"
+                                            + "A3 - Café con leche\n"
+                                            + "A4 - Café cortado\n"
+                                            + "B1 - Café solo descafeinado\n"
+                                            + "B2 - Café solo largo descafeinado\n"
+                                            + "B3 - Café descafeinado con leche\n"
+                                            + "B4 - Café cortado descafeinado\n"
+                                            + "C1 - Chocolate\n"
+                                            + "D1 - Leche fría\n"
+                                            + "D2 - Leche caliente\n");
+                                } while (!(opcionesVenta.equalsIgnoreCase("A1") || opcionesVenta.equalsIgnoreCase("A2") || opcionesVenta.equalsIgnoreCase("A3")
+                                        || opcionesVenta.equalsIgnoreCase("A4") || opcionesVenta.equalsIgnoreCase("B1") || opcionesVenta.equalsIgnoreCase("B2")
+                                        || opcionesVenta.equalsIgnoreCase("B3") || opcionesVenta.equalsIgnoreCase("B4") || opcionesVenta.equalsIgnoreCase("C1")
+                                        || opcionesVenta.equalsIgnoreCase("D1") || opcionesVenta.equalsIgnoreCase("D2")));
+
                                 switch (opcionesVenta.toUpperCase()) {
                                     case "A1":
                                         if (cafetera.getSaldoCliente() >= PRECIO_CAFESOLO) {
@@ -149,12 +150,12 @@ public class Menu {
 
                                 if (compra == false) {
                                     String masSaldo = JOptionPane.showInputDialog("[Daw Coffee]\n"
-                                            + "El saldo es insuficiente para el producto seleccionado.\n"
-                                            + "Introduzca la cantidad adecuada:");
+                                            + "El saldo es insuficiente para el producto seleccionado.\n\n"
+                                            + "Introduzca más saldo:");
 
                                     double acumulaSaldo = Double.parseDouble(masSaldo);
 
-                                    cafetera.acumularSaldoCliente(acumulaSaldo);
+                                    cafetera.setSaldoCliente(cafetera.getSaldoCliente() + acumulaSaldo);
                                 }
 
                             } while (compra == false);
@@ -213,7 +214,7 @@ public class Menu {
                             JOptionPane.showMessageDialog(null, "[Daw Coffee]\n"
                                     + "El saldo introducido es insuficiente para el producto seleccionado.");
                         }
-                    } while (cafetera.saldoSuficiente(saldoCliente));
+                    } while (cafetera.getSaldoCliente() < PRECIO_LECHE);
 
                     break;
 
