@@ -305,6 +305,16 @@ public class Cafetera {
             reserva = false;
         }
 
+        if (getCafeDescafeinado().getCantidadActual() <= getCafeDescafeinado().getCantidadUmbral()) {
+            JOptionPane.showMessageDialog(null, "El depósito de " + getCafeDescafeinado().getContenido() + ", debe ser rellenado");
+            reserva = false;
+        }
+
+        if (getSacarina().getCantidadActual() <= getSacarina().getCantidadUmbral()) {
+            JOptionPane.showMessageDialog(null, "El depósito de " + getSacarina().getContenido() + ", debe ser rellenado");
+            reserva = false;
+        }
+
         if (reserva == true) {
             JOptionPane.showMessageDialog(null, "Ningún deposito ha llegado a la capacidad Umbral");
         }
