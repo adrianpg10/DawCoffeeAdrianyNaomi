@@ -170,11 +170,6 @@ public class Cafetera {
         }
     }
 
-    //Método acumularSaldoCliente
-    public void acumularSaldoCliente(double saldoIntroducido) {
-        this.saldoCliente += saldoIntroducido;
-    }
-
     //Métodos getters y setters
     public double getSaldoCliente() {
         return saldoCliente;
