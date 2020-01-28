@@ -267,54 +267,21 @@ public class Cafetera {
     }
 
     //Comprobamos si los depositos deben ser rellenados
-    public void comprobarDepositos() {
-        boolean reserva = true;
+    public String comprobarDepositos(Deposito deposito) {
 
-        if (getLeche().getCantidadActual() <= getLeche().getCantidadUmbral()) {
-            JOptionPane.showMessageDialog(null, "El depósito de " + getLeche().getContenido() + ", debe ser rellenado");
-            reserva = false;
+        String reserva = " ";
+
+        if (deposito.getCantidadActual() <= deposito.getCantidadUmbral()) {
+            reserva = deposito.getContenido();
         }
 
-        if (getAzucar().getCantidadActual() <= getAzucar().getCantidadUmbral()) {
-            JOptionPane.showMessageDialog(null, "El depósito de " + getAzucar().getContenido() + ", debe ser rellenado");
-            reserva = false;
-        }
-
-        if (getCafe().getCantidadActual() <= getCafe().getCantidadUmbral()) {
-            JOptionPane.showMessageDialog(null, "El depósito de " + getCafe().getContenido() + ", debe ser rellenado");
-            reserva = false;
-        }
-
-        if (getChocolate().getCantidadActual() <= getChocolate().getCantidadUmbral()) {
-            JOptionPane.showMessageDialog(null, "El depósito de " + getChocolate().getContenido() + ", debe ser rellenado");
-            reserva = false;
-        }
-
-        if (getAgua().getCantidadActual() <= getAgua().getCantidadUmbral()) {
-            JOptionPane.showMessageDialog(null, "El depósito de " + getAgua().getContenido() + ", debe ser rellenado");
-            reserva = false;
-        }
-
-        if (getCafeDescafeinado().getCantidadActual() <= getCafeDescafeinado().getCantidadUmbral()) {
-            JOptionPane.showMessageDialog(null, "El depósito de " + getCafeDescafeinado().getContenido() + ", debe ser rellenado");
-            reserva = false;
-        }
-
-        if (getSacarina().getCantidadActual() <= getSacarina().getCantidadUmbral()) {
-            JOptionPane.showMessageDialog(null, "El depósito de " + getSacarina().getContenido() + ", debe ser rellenado");
-            reserva = false;
-        }
-
-        if (reserva == true) {
-            JOptionPane.showMessageDialog(null, "Ningún deposito ha llegado a la capacidad Umbral");
-        }
+        return reserva;
 
     }
 
     //Método que comprueba el estado general de los depósitos de la cafetera.
     public String comprobarEstadoGeneral() {
 
-       
         String cadena = agua.toString() + cafe.toString() + leche.toString() + chocolate.toString()
                 + azucar.toString() + sacarina.toString() + cafeDescafeinado.toString() + admin.toString();
         return cadena;
