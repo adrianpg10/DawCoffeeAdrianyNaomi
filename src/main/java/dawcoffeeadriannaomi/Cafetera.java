@@ -175,16 +175,6 @@ public class Cafetera {
         this.saldoCliente += saldoIntroducido;
     }
 
-    //Método saldoSuficiente devuelve un boolean, true si el dinero introducido por el cliente
-    //es igual o superior al precio mínimo que se necesita para comprar un producto sino devuelve false
-    public boolean saldoSuficiente(double saldoIntroducido) {
-        if (saldoIntroducido < PRECIO_PRODUCT_MINIMO) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
     //Métodos getters y setters
     public double getSaldoCliente() {
         return saldoCliente;

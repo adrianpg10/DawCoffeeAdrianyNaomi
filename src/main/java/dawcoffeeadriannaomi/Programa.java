@@ -30,7 +30,7 @@ public class Programa {
 
         //Ejecuto el menú y le paso la cafetera
         Menu.Menu(cafetera);
-
+        
         //System.out.println(cafetera.toString()); --Comprobación
     }
 }
