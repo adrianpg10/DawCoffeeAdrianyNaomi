@@ -260,7 +260,9 @@ public class Menu {
 
                             break;
                         case 2:
-                            cafetera.comprobarEstadoGeneral();
+
+                            JOptionPane.showMessageDialog(null, cafetera.comprobarEstadoGeneral());
+
                             break;
                         case 3:
                             cafetera.getNumVentasRealizadas();
