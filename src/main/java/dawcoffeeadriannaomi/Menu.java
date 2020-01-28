@@ -255,8 +255,27 @@ public class Menu {
 
                     switch (opcionElegida) {
                         case 1:
-
-                            cafetera.comprobarDepositos();
+                            if (cafetera.comprobarDepositos(cafetera.getAgua()).equalsIgnoreCase(cafetera.getAgua().getContenido())) {
+                                JOptionPane.showMessageDialog(null, "El depósito de " + cafetera.comprobarDepositos(cafetera.getAgua()) + ", debe ser rellenado");
+                            }
+                            if (cafetera.comprobarDepositos(cafetera.getCafe()).equalsIgnoreCase(cafetera.getCafe().getContenido())) {
+                                JOptionPane.showMessageDialog(null, "El depósito de " + cafetera.comprobarDepositos(cafetera.getCafe()) + ", debe ser rellenado");
+                            }
+                            if (cafetera.comprobarDepositos(cafetera.getLeche()).equalsIgnoreCase(cafetera.getLeche().getContenido())) {
+                                JOptionPane.showMessageDialog(null, "El depósito de " + cafetera.comprobarDepositos(cafetera.getLeche()) + ", debe ser rellenado");
+                            }
+                            if (cafetera.comprobarDepositos(cafetera.getAzucar()).equalsIgnoreCase(cafetera.getAzucar().getContenido())) {
+                                JOptionPane.showMessageDialog(null, "El depósito de " + cafetera.comprobarDepositos(cafetera.getAzucar()) + ", debe ser rellenado");
+                            }
+                            if (cafetera.comprobarDepositos(cafetera.getChocolate()).equalsIgnoreCase(cafetera.getChocolate().getContenido())) {
+                                JOptionPane.showMessageDialog(null, "El depósito de " + cafetera.comprobarDepositos(cafetera.getChocolate()) + ", debe ser rellenado");
+                            }
+                            if (cafetera.comprobarDepositos(cafetera.getSacarina()).equalsIgnoreCase(cafetera.getSacarina().getContenido())) {
+                                JOptionPane.showMessageDialog(null, "El depósito de " + cafetera.comprobarDepositos(cafetera.getSacarina()) + ", debe ser rellenado");
+                            }
+                            if (cafetera.comprobarDepositos(cafetera.getCafeDescafeinado()).equalsIgnoreCase(cafetera.getCafeDescafeinado().getContenido())) {
+                                JOptionPane.showMessageDialog(null, "El depósito de " + cafetera.comprobarDepositos(cafetera.getCafeDescafeinado()) + ", debe ser rellenado");
+                            }
 
                             break;
                         case 2:
