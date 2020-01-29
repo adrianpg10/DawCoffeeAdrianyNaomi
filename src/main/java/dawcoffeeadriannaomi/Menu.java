@@ -24,9 +24,10 @@ public class Menu {
 
     public static void Menu(Cafetera cafetera) {
 
+        //Variables
         int opcionElegida;
         boolean repetir = true;
-        DecimalFormat df = new DecimalFormat("#0.00");
+
         //Controlo que el Menú se repita mientras el usuario no selecciones salir del programa
         do {
             //Controlo que el usuario utiliza una opción válida
@@ -43,221 +44,15 @@ public class Menu {
                 //Mientras el usuario elija una de las opciones que no están disponibles se volverá a repetir el menú
             } while (opcionElegida < 1 || opcionElegida > 3);
 
-            //Variable para controlar si se realiza la compra o no
-            boolean compra = false;
-
             //Utilizo un switch para las 3 opciones disponibles
             switch (opcionElegida) {
                 case 1:
                     //VENTA DE PRODUCTOS//
-                    double saldoCliente;
-                    do {
-                        //Mensaje para que el usuario introduzca el saldo
-                        String saldo = JOptionPane.showInputDialog("[Daw Coffee]\n"
-                                + "Introduzca el dinero:");
-
-                        //Paso de String a double
-                        saldoCliente = Double.parseDouble(saldo);
-                        //El saldo del cliente se va actualizando - tendrá que introducir más dinero dependiendo del producto que desee
-                        cafetera.setSaldoCliente(cafetera.getSaldoCliente() + saldoCliente); //Cambio el saldo del cliente por el actual
-
-                        //Controlo que el saldo introducido sea igual o superior al precio del producto más barato
-                        if (cafetera.getSaldoCliente() >= PRECIO_LECHE) {
-                            String opcionesVenta;
-                            String opcionAzucar;
-                            String opcionCantAzucar;
-
-                            do {
-                                //Controlo que el usuario elige una opción válida
-                                do {
-                                    //Muestro al usuario los productos disponibles
-                                    opcionesVenta = JOptionPane.showInputDialog("[Daw Coffee]\n"
-                                            + "Elije una opción de nuestros productos:\n"
-                                            + "A1 - Café solo\n"
-                                            + "A2 - Café solo largo\n"
-                                            + "A3 - Café con leche\n"
-                                            + "A4 - Café cortado\n"
-                                            + "B1 - Café solo descafeinado\n"
-                                            + "B2 - Café solo largo descafeinado\n"
-                                            + "B3 - Café descafeinado con leche\n"
-                                            + "B4 - Café cortado descafeinado\n"
-                                            + "C1 - Chocolate\n"
-                                            + "D1 - Leche fría\n"
-                                            + "D2 - Leche caliente\n");
-                                } while (!(opcionesVenta.equalsIgnoreCase("A1") || opcionesVenta.equalsIgnoreCase("A2") || opcionesVenta.equalsIgnoreCase("A3")
-                                        || opcionesVenta.equalsIgnoreCase("A4") || opcionesVenta.equalsIgnoreCase("B1") || opcionesVenta.equalsIgnoreCase("B2")
-                                        || opcionesVenta.equalsIgnoreCase("B3") || opcionesVenta.equalsIgnoreCase("B4") || opcionesVenta.equalsIgnoreCase("C1")
-                                        || opcionesVenta.equalsIgnoreCase("D1") || opcionesVenta.equalsIgnoreCase("D2")));
-
-                                switch (opcionesVenta.toUpperCase()) {
-                                    case "A1":
-                                        //Si el saldo es inferior al precio del producto no se realiza la venta
-                                        if (cafetera.getSaldoCliente() >= PRECIO_CAFESOLO) {
-                                            cafetera.servirCafeSolo();
-                                            cafetera.setSaldoCliente(cafetera.getSaldoCliente() - PRECIO_CAFESOLO);
-                                            compra = true;
-                                        }
-                                        break;
-                                    case "A2":
-                                        if (cafetera.getSaldoCliente() >= PRECIO_CAFELARGO) {
-                                            cafetera.servirCafeLargo();
-                                            cafetera.setSaldoCliente(cafetera.getSaldoCliente() - PRECIO_CAFELARGO);
-                                            compra = true;
-                                        }
-                                        break;
-                                    case "A3":
-                                        if (cafetera.getSaldoCliente() >= PRECIO_CAFELECHE) {
-                                            cafetera.servirCafeLeche();
-                                            cafetera.setSaldoCliente(cafetera.getSaldoCliente() - PRECIO_CAFELECHE);
-                                            compra = true;
-                                        }
-                                        break;
-                                    case "A4":
-                                        if (cafetera.getSaldoCliente() >= PRECIO_CORTADO) {
-                                            cafetera.servirCafeCortado();
-                                            cafetera.setSaldoCliente(cafetera.getSaldoCliente() - PRECIO_CORTADO);
-                                            compra = true;
-                                        }
-                                        break;
-                                    case "B1":
-                                        if (cafetera.getSaldoCliente() >= PRECIO_CAFESOLO) {
-                                            cafetera.servirCafeSoloDescafeinado();
-                                            cafetera.setSaldoCliente(cafetera.getSaldoCliente() - PRECIO_CAFESOLO);
-                                            compra = true;
-                                        }
-                                        break;
-                                    case "B2":
-                                        if (cafetera.getSaldoCliente() >= PRECIO_CAFELARGO) {
-                                            cafetera.servirCafeLargoDescafeinado();
-                                            cafetera.setSaldoCliente(cafetera.getSaldoCliente() - PRECIO_CAFELARGO);
-                                            compra = true;
-                                        }
-                                        break;
-                                    case "B3":
-                                        if (cafetera.getSaldoCliente() >= PRECIO_CAFELECHE) {
-                                            cafetera.servirCafeLecheDescafeinado();
-                                            cafetera.setSaldoCliente(cafetera.getSaldoCliente() - PRECIO_CAFELECHE);
-                                            compra = true;
-                                        }
-                                        break;
-                                    case "B4":
-                                        if (cafetera.getSaldoCliente() >= PRECIO_CORTADO) {
-                                            cafetera.servirCafeCortadoDescafeinado();
-                                            cafetera.setSaldoCliente(cafetera.getSaldoCliente() - PRECIO_CORTADO);
-                                            compra = true;
-                                        }
-                                        break;
-                                    case "C1":
-                                        if (cafetera.getSaldoCliente() >= PRECIO_CHOCOLATE) {
-                                            cafetera.servirChocolate();
-                                            cafetera.setSaldoCliente(cafetera.getSaldoCliente() - PRECIO_CHOCOLATE);
-                                            compra = true;
-                                        }
-                                        break;
-                                    case "D1":
-                                    case "D2":
-                                        if (cafetera.getSaldoCliente() >= PRECIO_LECHE) {
-                                            cafetera.servirLeche();
-                                            cafetera.setSaldoCliente(cafetera.getSaldoCliente() - PRECIO_LECHE);
-                                            compra = true;
-                                        }
-                                        break;
-                                }
-
-                                //Si el salso es insuficiente para el producto seleccionado el usuario
-                                //deberá introducir más dinero
-                                if (compra == false) {
-                                    String masSaldo = JOptionPane.showInputDialog("[Daw Coffee]\n"
-                                            + "El saldo es insuficiente para el producto seleccionado.\n"
-                                            + "Introduzca más dinero:");
-
-                                    double acumulaSaldo = Double.parseDouble(masSaldo);
-
-                                    //Actualizamos el saldo actual del cliente
-                                    cafetera.setSaldoCliente(cafetera.getSaldoCliente() + acumulaSaldo);
-                                }
-                                //Se repetirá el proceso mientras no se haya efectuado la compra
-                            } while (compra == false);
-
-                            int opAzucar, opCantAzucar;
-
-                            //Selecciona del tipo de edulcorante
-                            //Controlo que se elije una opción válida
-                            do {
-                                opcionAzucar = JOptionPane.showInputDialog("[Daw Coffee]\n"
-                                        + "¿Desea su bebida con azúcar o sacarina?:\n"
-                                        + "1.- Azúcar\n"
-                                        + "2.- Sacarina\n");
-
-                                opAzucar = Integer.parseInt(opcionAzucar);
-                            } while (opAzucar < 1 || opAzucar > 2);
-
-                            //El usuario selecciona la cantidad de edulcorante que desea
-                            do {
-                                opcionCantAzucar = JOptionPane.showInputDialog("[Daw Coffee]\n"
-                                        + "¿Qué cantidad de edulcorante desea?:\n"
-                                        + "1.- Poca\n"
-                                        + "2.- Media\n"
-                                        + "3.- Mucha\n");
-                                opCantAzucar = Integer.parseInt(opcionCantAzucar);
-
-                            } while (opCantAzucar < 1 || opCantAzucar > 3);
-
-                            //Se sirve el azúcar o el edulcorante al producto
-                            switch (opAzucar) {
-                                case 1: //HA ELEGIDO AZÚCAR
-                                    switch (opCantAzucar) { //CANTIDAD DE AZÚCAR QUE DESEA
-                                        case 1:
-                                            cafetera.servirAzucar(1);
-                                            break;
-                                        case 2:
-                                            cafetera.servirAzucar(2);
-                                            break;
-                                        case 3:
-                                            cafetera.servirAzucar(3);
-                                            break;
-                                    }
-                                    break;
-
-                                case 2: //HA ELEGIDO SACARINA
-                                    switch (opCantAzucar) { //CANTIDAD DE SACARINA QUE DESEA
-                                        case 1:
-                                            cafetera.servirSacarina(1);
-                                            break;
-                                        case 2:
-                                            cafetera.servirSacarina(2);
-                                            break;
-                                        case 3:
-                                            cafetera.servirSacarina(3);
-                                            break;
-                                    }
-                                    break;
-                            }
-                        } else {
-                            //Muestro mensaje de saldo insuficiente y el cambio que en este caso se devolverá
-                            //ya que no llegá al precio del producto más barato
-                            JOptionPane.showMessageDialog(null, "[Daw Coffee]\n"
-                                    + "El saldo introducido es insuficiente.\n"
-                                    + "Su cambio es: " + df.format(cafetera.getSaldoCliente()));
-                            //Tras devolverle el dinero, el saldo del cliente se actualizará a cero
-                            cafetera.setSaldoCliente(0);
-                        }
-                        //Este proceso se producirá hasta que se introduzca el saldo mínimo y se realice la venta
-                    } while (cafetera.getSaldoCliente() < PRECIO_LECHE && compra == false);
-
-                    //Muestro los datos al usuario del saldo restante tras el pedido
-                    JOptionPane.showMessageDialog(null, "[Daw Coffee]\n"
-                            + "Su cambio es: " + df.format(cafetera.getSaldoCliente())
-                            + "\nDisfrute de su pedido.");
-
-                    //Tras devolverle el dinero el saldo del cliente se actualizará a cero
-                    cafetera.setSaldoCliente(0);
+                    Menu.ventas(cafetera);
                     break;
-
                 case 2:
-
-                    administracion(cafetera);
-
+                    //ADMINISTRACIÓN DE LA CAFETERA//
+                    Menu.administracion(cafetera);
                     break;
                 case 3:
                     //SALIR DEL PROGRAMA//
@@ -272,7 +67,219 @@ public class Menu {
         } while (repetir);
     }
 
-    //Creamos un metodo statico para modularizar la sección de administracion
+    //Método de clase estático que gestiona la parte de ventas del menú
+    public static void ventas(Cafetera cafetera) {
+        
+        double saldoCliente;
+        //Variable para controlar si se realiza la compra o no
+        boolean compra = false;
+        //Utilizo la clase DecimalFormat para dar formato a los datos
+        DecimalFormat df = new DecimalFormat("#0.00");
+        
+        do {
+            //Mensaje para que el usuario introduzca el saldo
+            String saldo = JOptionPane.showInputDialog("[Daw Coffee]\n"
+                    + "Introduzca el dinero:");
+
+            //Paso de String a double
+            saldoCliente = Double.parseDouble(saldo);
+            //El saldo del cliente se va actualizando - tendrá que introducir más dinero dependiendo del producto que desee
+            cafetera.setSaldoCliente(cafetera.getSaldoCliente() + saldoCliente); //Cambio el saldo del cliente por el actual
+
+            //Controlo que el saldo introducido sea igual o superior al precio del producto más barato
+            if (cafetera.getSaldoCliente() >= PRECIO_LECHE) {
+                String opcionesVenta;
+                String opcionAzucar;
+                String opcionCantAzucar;
+
+                do {
+                    //Controlo que el usuario elige una opción válida
+                    do {
+                        //Muestro al usuario los productos disponibles
+                        opcionesVenta = JOptionPane.showInputDialog("[Daw Coffee]\n"
+                                + "Elije una opción de nuestros productos:\n"
+                                + "A1 - Café solo\n"
+                                + "A2 - Café solo largo\n"
+                                + "A3 - Café con leche\n"
+                                + "A4 - Café cortado\n"
+                                + "B1 - Café solo descafeinado\n"
+                                + "B2 - Café solo largo descafeinado\n"
+                                + "B3 - Café descafeinado con leche\n"
+                                + "B4 - Café cortado descafeinado\n"
+                                + "C1 - Chocolate\n"
+                                + "D1 - Leche fría\n"
+                                + "D2 - Leche caliente\n");
+                    } while (!(opcionesVenta.equalsIgnoreCase("A1") || opcionesVenta.equalsIgnoreCase("A2") || opcionesVenta.equalsIgnoreCase("A3")
+                            || opcionesVenta.equalsIgnoreCase("A4") || opcionesVenta.equalsIgnoreCase("B1") || opcionesVenta.equalsIgnoreCase("B2")
+                            || opcionesVenta.equalsIgnoreCase("B3") || opcionesVenta.equalsIgnoreCase("B4") || opcionesVenta.equalsIgnoreCase("C1")
+                            || opcionesVenta.equalsIgnoreCase("D1") || opcionesVenta.equalsIgnoreCase("D2")));
+
+                    switch (opcionesVenta.toUpperCase()) {
+                        case "A1":
+                            //Si el saldo es inferior al precio del producto no se realiza la venta
+                            if (cafetera.getSaldoCliente() >= PRECIO_CAFESOLO) {
+                                cafetera.servirCafeSolo();
+                                cafetera.setSaldoCliente(cafetera.getSaldoCliente() - PRECIO_CAFESOLO);
+                                compra = true;
+                            }
+                            break;
+                        case "A2":
+                            if (cafetera.getSaldoCliente() >= PRECIO_CAFELARGO) {
+                                cafetera.servirCafeLargo();
+                                cafetera.setSaldoCliente(cafetera.getSaldoCliente() - PRECIO_CAFELARGO);
+                                compra = true;
+                            }
+                            break;
+                        case "A3":
+                            if (cafetera.getSaldoCliente() >= PRECIO_CAFELECHE) {
+                                cafetera.servirCafeLeche();
+                                cafetera.setSaldoCliente(cafetera.getSaldoCliente() - PRECIO_CAFELECHE);
+                                compra = true;
+                            }
+                            break;
+                        case "A4":
+                            if (cafetera.getSaldoCliente() >= PRECIO_CORTADO) {
+                                cafetera.servirCafeCortado();
+                                cafetera.setSaldoCliente(cafetera.getSaldoCliente() - PRECIO_CORTADO);
+                                compra = true;
+                            }
+                            break;
+                        case "B1":
+                            if (cafetera.getSaldoCliente() >= PRECIO_CAFESOLO) {
+                                cafetera.servirCafeSoloDescafeinado();
+                                cafetera.setSaldoCliente(cafetera.getSaldoCliente() - PRECIO_CAFESOLO);
+                                compra = true;
+                            }
+                            break;
+                        case "B2":
+                            if (cafetera.getSaldoCliente() >= PRECIO_CAFELARGO) {
+                                cafetera.servirCafeLargoDescafeinado();
+                                cafetera.setSaldoCliente(cafetera.getSaldoCliente() - PRECIO_CAFELARGO);
+                                compra = true;
+                            }
+                            break;
+                        case "B3":
+                            if (cafetera.getSaldoCliente() >= PRECIO_CAFELECHE) {
+                                cafetera.servirCafeLecheDescafeinado();
+                                cafetera.setSaldoCliente(cafetera.getSaldoCliente() - PRECIO_CAFELECHE);
+                                compra = true;
+                            }
+                            break;
+                        case "B4":
+                            if (cafetera.getSaldoCliente() >= PRECIO_CORTADO) {
+                                cafetera.servirCafeCortadoDescafeinado();
+                                cafetera.setSaldoCliente(cafetera.getSaldoCliente() - PRECIO_CORTADO);
+                                compra = true;
+                            }
+                            break;
+                        case "C1":
+                            if (cafetera.getSaldoCliente() >= PRECIO_CHOCOLATE) {
+                                cafetera.servirChocolate();
+                                cafetera.setSaldoCliente(cafetera.getSaldoCliente() - PRECIO_CHOCOLATE);
+                                compra = true;
+                            }
+                            break;
+                        case "D1":
+                        case "D2":
+                            if (cafetera.getSaldoCliente() >= PRECIO_LECHE) {
+                                cafetera.servirLeche();
+                                cafetera.setSaldoCliente(cafetera.getSaldoCliente() - PRECIO_LECHE);
+                                compra = true;
+                            }
+                            break;
+                    }
+
+                    //Si el salso es insuficiente para el producto seleccionado el usuario
+                    //deberá introducir más dinero
+                    if (compra == false) {
+                        String masSaldo = JOptionPane.showInputDialog("[Daw Coffee]\n"
+                                + "El saldo es insuficiente para el producto seleccionado.\n"
+                                + "Introduzca más dinero:");
+
+                        double acumulaSaldo = Double.parseDouble(masSaldo);
+
+                        //Actualizamos el saldo actual del cliente
+                        cafetera.setSaldoCliente(cafetera.getSaldoCliente() + acumulaSaldo);
+                    }
+                    //Se repetirá el proceso mientras no se haya efectuado la compra
+                } while (compra == false);
+
+                int opAzucar, opCantAzucar;
+
+                //Selecciona del tipo de edulcorante
+                //Controlo que se elije una opción válida
+                do {
+                    opcionAzucar = JOptionPane.showInputDialog("[Daw Coffee]\n"
+                            + "¿Desea su bebida con azúcar o sacarina?:\n"
+                            + "1.- Azúcar\n"
+                            + "2.- Sacarina\n");
+
+                    opAzucar = Integer.parseInt(opcionAzucar);
+                } while (opAzucar < 1 || opAzucar > 2);
+
+                //El usuario selecciona la cantidad de edulcorante que desea
+                do {
+                    opcionCantAzucar = JOptionPane.showInputDialog("[Daw Coffee]\n"
+                            + "¿Qué cantidad de edulcorante desea?:\n"
+                            + "1.- Ninguna\n"
+                            + "2.- Poca\n"
+                            + "3.- Mucha\n");
+                    opCantAzucar = Integer.parseInt(opcionCantAzucar);
+
+                } while (opCantAzucar < 1 || opCantAzucar > 3);
+
+                //Se sirve el azúcar o el edulcorante al producto
+                switch (opAzucar) {
+                    case 1: //HA ELEGIDO AZÚCAR
+                        switch (opCantAzucar) { //CANTIDAD DE AZÚCAR QUE DESEA
+                            case 1:
+                                cafetera.servirAzucar(0);
+                                break;
+                            case 2:
+                                cafetera.servirAzucar(1);
+                                break;
+                            case 3:
+                                cafetera.servirAzucar(2);
+                                break;
+                        }
+                        break;
+
+                    case 2: //HA ELEGIDO SACARINA
+                        switch (opCantAzucar) { //CANTIDAD DE SACARINA QUE DESEA
+                            case 1:
+                                cafetera.servirSacarina(0);
+                                break;
+                            case 2:
+                                cafetera.servirSacarina(1);
+                                break;
+                            case 3:
+                                cafetera.servirSacarina(2);
+                                break;
+                        }
+                        break;
+                }
+            } else {
+                //Muestro mensaje de saldo insuficiente y el cambio que en este caso se devolverá
+                //ya que no llegá al precio del producto más barato
+                JOptionPane.showMessageDialog(null, "[Daw Coffee]\n"
+                        + "El saldo introducido es insuficiente.\n"
+                        + "Su cambio es: " + df.format(cafetera.getSaldoCliente()));
+                //Tras devolverle el dinero, el saldo del cliente se actualizará a cero
+                cafetera.setSaldoCliente(0);
+            }
+            //Este proceso se producirá hasta que se introduzca el saldo mínimo y se realice la venta
+        } while (cafetera.getSaldoCliente() < PRECIO_LECHE && compra == false);
+
+        //Muestro los datos al usuario del saldo restante tras el pedido
+        JOptionPane.showMessageDialog(null, "[Daw Coffee]\n"
+                + "Su cambio es: " + df.format(cafetera.getSaldoCliente())
+                + "\nDisfrute de su pedido.");
+
+        //Tras devolverle el dinero el saldo del cliente se actualizará a cero
+        cafetera.setSaldoCliente(0);
+    }
+
+    //Creamos un método estático de clase para modularizar la sección de administracion
     public static void administracion(Cafetera cafetera) {
 
         String adminUsuario;
