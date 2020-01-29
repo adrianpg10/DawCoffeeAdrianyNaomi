@@ -42,7 +42,7 @@ public class Menu {
 
                 //Mientras el usuario elija una de las opciones que no están disponibles se volverá a repetir el menú
             } while (opcionElegida < 1 || opcionElegida > 3);
-            
+
             //Variable para controlar si se realiza la compra o no
             boolean compra = false;
 
@@ -163,7 +163,7 @@ public class Menu {
                                         }
                                         break;
                                 }
-                                
+
                                 //Si el salso es insuficiente para el producto seleccionado el usuario
                                 //deberá introducir más dinero
                                 if (compra == false) {
@@ -172,15 +172,15 @@ public class Menu {
                                             + "Introduzca más dinero:");
 
                                     double acumulaSaldo = Double.parseDouble(masSaldo);
-                                    
+
                                     //Actualizamos el saldo actual del cliente
                                     cafetera.setSaldoCliente(cafetera.getSaldoCliente() + acumulaSaldo);
                                 }
-                            //Se repetirá el proceso mientras no se haya efectuado la compra
+                                //Se repetirá el proceso mientras no se haya efectuado la compra
                             } while (compra == false);
 
                             int opAzucar, opCantAzucar;
-                            
+
                             //Selecciona del tipo de edulcorante
                             //Controlo que se elije una opción válida
                             do {
@@ -191,7 +191,7 @@ public class Menu {
 
                                 opAzucar = Integer.parseInt(opcionAzucar);
                             } while (opAzucar < 1 || opAzucar > 2);
-                            
+
                             //El usuario selecciona la cantidad de edulcorante que desea
                             do {
                                 opcionCantAzucar = JOptionPane.showInputDialog("[Daw Coffee]\n"
@@ -202,7 +202,7 @@ public class Menu {
                                 opCantAzucar = Integer.parseInt(opcionCantAzucar);
 
                             } while (opCantAzucar < 1 || opCantAzucar > 3);
-                            
+
                             //Se sirve el azúcar o el edulcorante al producto
                             switch (opAzucar) {
                                 case 1: //HA ELEGIDO AZÚCAR
@@ -288,29 +288,52 @@ public class Menu {
                         //Paso el String "opcion" a int haciendo un parseo
                         opcionElegida = Integer.parseInt(opcionesAdministracion);
                     } while (opcionElegida < 1 || opcionElegida > 4);
-
+                    boolean reserva = false;
                     switch (opcionElegida) {
+
                         case 1:
+
                             if (cafetera.comprobarDepositos(cafetera.getAgua()).equalsIgnoreCase(cafetera.getAgua().getContenido())) {
+
                                 JOptionPane.showMessageDialog(null, "El depósito de " + cafetera.comprobarDepositos(cafetera.getAgua()) + ", debe ser rellenado");
+                                reserva = true;
                             }
+
                             if (cafetera.comprobarDepositos(cafetera.getCafe()).equalsIgnoreCase(cafetera.getCafe().getContenido())) {
+
                                 JOptionPane.showMessageDialog(null, "El depósito de " + cafetera.comprobarDepositos(cafetera.getCafe()) + ", debe ser rellenado");
+                                reserva = true;
                             }
                             if (cafetera.comprobarDepositos(cafetera.getLeche()).equalsIgnoreCase(cafetera.getLeche().getContenido())) {
+
                                 JOptionPane.showMessageDialog(null, "El depósito de " + cafetera.comprobarDepositos(cafetera.getLeche()) + ", debe ser rellenado");
+                                reserva = true;
                             }
+
                             if (cafetera.comprobarDepositos(cafetera.getAzucar()).equalsIgnoreCase(cafetera.getAzucar().getContenido())) {
+
                                 JOptionPane.showMessageDialog(null, "El depósito de " + cafetera.comprobarDepositos(cafetera.getAzucar()) + ", debe ser rellenado");
+                                reserva = true;
                             }
                             if (cafetera.comprobarDepositos(cafetera.getChocolate()).equalsIgnoreCase(cafetera.getChocolate().getContenido())) {
+
                                 JOptionPane.showMessageDialog(null, "El depósito de " + cafetera.comprobarDepositos(cafetera.getChocolate()) + ", debe ser rellenado");
+                                reserva = true;
                             }
                             if (cafetera.comprobarDepositos(cafetera.getSacarina()).equalsIgnoreCase(cafetera.getSacarina().getContenido())) {
+
                                 JOptionPane.showMessageDialog(null, "El depósito de " + cafetera.comprobarDepositos(cafetera.getSacarina()) + ", debe ser rellenado");
+                                reserva = true;
                             }
                             if (cafetera.comprobarDepositos(cafetera.getCafeDescafeinado()).equalsIgnoreCase(cafetera.getCafeDescafeinado().getContenido())) {
+
                                 JOptionPane.showMessageDialog(null, "El depósito de " + cafetera.comprobarDepositos(cafetera.getCafeDescafeinado()) + ", debe ser rellenado");
+                                reserva = true;
+                            }
+
+                            if (reserva == false) {
+                                JOptionPane.showMessageDialog(null, "Ningun deposito ha llegado a la capacidad Umbral");
+
                             }
 
                             break;
@@ -320,7 +343,7 @@ public class Menu {
 
                             break;
                         case 3:
-                            JOptionPane.showMessageDialog(null,"Se han realizado: " +  cafetera.getNumVentasRealizadas()+ " ventas");
+                            JOptionPane.showMessageDialog(null, "Se han realizado: " + cafetera.getNumVentasRealizadas() + " ventas");
                             break;
                         case 4:
                             int opciondepositosElegida;
