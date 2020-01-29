@@ -320,7 +320,7 @@ public class Menu {
 
                             break;
                         case 3:
-                            cafetera.getNumVentasRealizadas();
+                            JOptionPane.showMessageDialog(null,"Se han realizado: " +  cafetera.getNumVentasRealizadas()+ " ventas");
                             break;
                         case 4:
                             int opciondepositosElegida;
