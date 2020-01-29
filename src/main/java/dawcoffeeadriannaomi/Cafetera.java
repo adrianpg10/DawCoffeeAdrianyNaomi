@@ -187,16 +187,8 @@ public class Cafetera {
         return saldoAcumulado;
     }
 
-    public void setSaldoAcumulado(double saldoAcumulado) {
-        this.saldoAcumulado = saldoAcumulado;
-    }
-
     public int getNumVentasRealizadas() {
         return numVentasRealizadas;
-    }
-
-    public void setNumVentasRealizadas(int numVentasRealizadas) {
-        this.numVentasRealizadas = numVentasRealizadas;
     }
 
     public Deposito getLeche() {
