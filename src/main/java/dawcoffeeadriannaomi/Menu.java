@@ -69,22 +69,27 @@ public class Menu {
 
     //Método de clase estático que gestiona la parte de ventas del menú
     public static void ventas(Cafetera cafetera) {
-        
+
         double saldoCliente;
         //Variable para controlar si se realiza la compra o no
         boolean compra = false;
         //Utilizo la clase DecimalFormat para dar formato a los datos
         DecimalFormat df = new DecimalFormat("#0.00");
-        
-        do {
-            //Mensaje para que el usuario introduzca el saldo
-            String saldo = JOptionPane.showInputDialog("[Daw Coffee]\n"
-                    + "Introduzca el dinero:");
 
-            //Paso de String a double
-            saldoCliente = Double.parseDouble(saldo);
-            //El saldo del cliente se va actualizando - tendrá que introducir más dinero dependiendo del producto que desee
-            cafetera.setSaldoCliente(cafetera.getSaldoCliente() + saldoCliente); //Cambio el saldo del cliente por el actual
+        do {
+            // Controlamos la excepcion del signo ","
+            try {
+                //Mensaje para que el usuario introduzca el saldo
+                String saldo = JOptionPane.showInputDialog("[Daw Coffee]\n"
+                        + "Introduzca el dinero:");
+                //Paso de String a double
+                saldoCliente = Double.parseDouble(saldo);
+                //El saldo del cliente se va actualizando - tendrá que introducir más dinero dependiendo del producto que desee
+                cafetera.setSaldoCliente(cafetera.getSaldoCliente() + saldoCliente); //Cambio el saldo del cliente por el actual
+            } catch (NumberFormatException e) {
+
+                JOptionPane.showMessageDialog(null, "Has introducido mal el importe. Signo incorrecto ( , ) ", "Error", JOptionPane.ERROR_MESSAGE);
+            }
 
             //Controlo que el saldo introducido sea igual o superior al precio del producto más barato
             if (cafetera.getSaldoCliente() >= PRECIO_LECHE) {
