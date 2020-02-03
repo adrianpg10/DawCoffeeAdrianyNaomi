@@ -47,6 +47,14 @@ public class Cafetera {
 
     private final double PRECIO_PRODUCT_MINIMO = 0.5;
 
+    //Constantes con los precios de los productos
+    private static final double PRECIO_CAFESOLO = 0.8;
+    private static final double PRECIO_CAFELARGO = 0.9;
+    private static final double PRECIO_CAFELECHE = 1.1;
+    private static final double PRECIO_CORTADO = 1;
+    private static final double PRECIO_CHOCOLATE = 1.4;
+    private static final double PRECIO_LECHE = 0.5;
+
     //Constructor por defecto
     public Cafetera() {
         this.saldoCliente = 5;
@@ -76,80 +84,90 @@ public class Cafetera {
 
     //Método servirCafeSolo que actualiza el estado de los depósitos 
     //Nota: Un vaso 180 ml/gr
-    public void servirCafeSolo() {
+    public void servirCafeSolo(double saldoIntroducido) {
         cafe.setCantidadActual(cafe.getCantidadActual() - CANT_AGUAYCAFE_CAFESOLO);
         agua.setCantidadActual(agua.getCantidadActual() - CANT_AGUAYCAFE_CAFESOLO);
         numVentasRealizadas++;
+        this.saldoAcumulado += saldoIntroducido - PRECIO_CAFESOLO;
     }
 
     //Método servirCafeSoloDescafeinado que actualiza el estado de los depósitos
-    public void servirCafeSoloDescafeinado() {
+    public void servirCafeSoloDescafeinado(double saldoIntroducido) {
         cafeDescafeinado.setCantidadActual(cafeDescafeinado.getCantidadActual() - CANT_AGUAYCAFE_CAFESOLO);
         agua.setCantidadActual(agua.getCantidadActual() - CANT_AGUAYCAFE_CAFESOLO);
         numVentasRealizadas++;
+        this.saldoAcumulado += saldoIntroducido - PRECIO_CAFESOLO;
     }
 
     //Método servirCafeLeche que actualiza el estado de los depósitos
-    public void servirCafeLeche() {
+    public void servirCafeLeche(double saldoIntroducido) {
         cafe.setCantidadActual(cafe.getCantidadActual() - CANT_CAFE_CAFELECHE);
         leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CAFELECHE);
         agua.setCantidadActual(agua.getCantidadActual() - CANT_AGUA_CAFELECHE);
         numVentasRealizadas++;
+        this.saldoAcumulado += saldoIntroducido - PRECIO_CAFELECHE;
     }
 
     //Método servirCafeLecheDescafeinado que actualiza el estado de los depósitos
-    public void servirCafeLecheDescafeinado() {
+    public void servirCafeLecheDescafeinado(double saldoIntroducido) {
         cafeDescafeinado.setCantidadActual(cafeDescafeinado.getCantidadActual() - CANT_CAFE_CAFELECHE);
         leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CAFELECHE);
         agua.setCantidadActual(agua.getCantidadActual() - CANT_AGUA_CAFELECHE);
         numVentasRealizadas++;
+        this.saldoAcumulado += saldoIntroducido - PRECIO_CAFELECHE;
     }
 
     //Método servirCafeLargo que actualiza el estado de los depósitos
-    public void servirCafeLargo() {
+    public void servirCafeLargo(double saldoIntroducido) {
         cafe.setCantidadActual(cafe.getCantidadActual() - CANT_CAFE_CAFELARGO);
         leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CAFELARGO);
         agua.setCantidadActual(agua.getCantidadActual() - CANT_AGUA_CAFELARGO);
         numVentasRealizadas++;
+        this.saldoAcumulado += saldoIntroducido - PRECIO_CAFELARGO;
     }
 
     //Método servirCafeLargoDescafeinado que actualiza el estado de los depósitos
-    public void servirCafeLargoDescafeinado() {
+    public void servirCafeLargoDescafeinado(double saldoIntroducido) {
         cafeDescafeinado.setCantidadActual(cafeDescafeinado.getCantidadActual() - CANT_CAFE_CAFELARGO);
         leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CAFELARGO);
         agua.setCantidadActual(agua.getCantidadActual() - CANT_AGUA_CAFELARGO);
         numVentasRealizadas++;
+        this.saldoAcumulado += saldoIntroducido - PRECIO_CAFELARGO;
     }
 
     //Método servirCafeCortado que actualiza el estado de los depósitos
-    public void servirCafeCortado() {
+    public void servirCafeCortado(double saldoIntroducido) {
         cafe.setCantidadActual(cafe.getCantidadActual() - CANT_CAFE_CAFECORTADO);
         leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CAFECORTADO);
         agua.setCantidadActual(agua.getCantidadActual() - CANT_AGUA_GENERAL);
         numVentasRealizadas++;
+        this.saldoAcumulado += saldoIntroducido - PRECIO_CORTADO;
     }
 
     //Método servirCafeCortadoDescafeinado que actualiza el estado de los depósitos
-    public void servirCafeCortadoDescafeinado() {
+    public void servirCafeCortadoDescafeinado(double saldoIntroducido) {
         cafeDescafeinado.setCantidadActual(cafeDescafeinado.getCantidadActual() - CANT_CAFE_CAFECORTADO);
         leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CAFECORTADO);
         agua.setCantidadActual(agua.getCantidadActual() - CANT_AGUA_GENERAL);
         numVentasRealizadas++;
+        this.saldoAcumulado += saldoIntroducido - PRECIO_CORTADO;
     }
 
     //Método servirChocolate que actualiza el estado de los depósitos
-    public void servirChocolate() {
+    public void servirChocolate(double saldoIntroducido) {
         chocolate.setCantidadActual(chocolate.getCantidadActual() - CANT_CHOCOLATE);
         leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE_CHOCOLATE);
         agua.setCantidadActual(agua.getCantidadActual() - CANT_AGUA_GENERAL);
         numVentasRealizadas++;
+        this.saldoAcumulado += saldoIntroducido - PRECIO_CHOCOLATE;
     }
 
     //Método servirLeche (en el menú controlaremos que sea caliete o fría)
-    public void servirLeche() {
+    public void servirLeche(double saldoIntroducido) {
         leche.setCantidadActual(leche.getCantidadActual() - CANT_LECHE);
         agua.setCantidadActual(agua.getCantidadActual() - CANT_AGUA_GENERAL);
         numVentasRealizadas++;
+        this.saldoAcumulado += saldoIntroducido - PRECIO_LECHE;
     }
 
     //Método servirAzucar que sirve una o dos cucharadas según elija el cliente
@@ -245,6 +263,34 @@ public class Cafetera {
 
     public void setSacarina(Deposito sacarina) {
         this.sacarina = sacarina;
+    }
+
+    public double getPRECIO_PRODUCT_MINIMO() {
+        return PRECIO_PRODUCT_MINIMO;
+    }
+
+    public static double getPRECIO_CAFESOLO() {
+        return PRECIO_CAFESOLO;
+    }
+
+    public static double getPRECIO_CAFELARGO() {
+        return PRECIO_CAFELARGO;
+    }
+
+    public static double getPRECIO_CAFELECHE() {
+        return PRECIO_CAFELECHE;
+    }
+
+    public static double getPRECIO_CORTADO() {
+        return PRECIO_CORTADO;
+    }
+
+    public static double getPRECIO_CHOCOLATE() {
+        return PRECIO_CHOCOLATE;
+    }
+
+    public static double getPRECIO_LECHE() {
+        return PRECIO_LECHE;
     }
 
     //Método toString

@@ -14,14 +14,6 @@ import javax.swing.JOptionPane;
  */
 public class Menu {
 
-    //Constantes con los precios de los productos
-    private static final double PRECIO_CAFESOLO = 0.8;
-    private static final double PRECIO_CAFELARGO = 0.9;
-    private static final double PRECIO_CAFELECHE = 1.1;
-    private static final double PRECIO_CORTADO = 1;
-    private static final double PRECIO_CHOCOLATE = 1.4;
-    private static final double PRECIO_LECHE = 0.5;
-
     public static void Menu(Cafetera cafetera) {
 
         //Variables
@@ -70,7 +62,7 @@ public class Menu {
     //Método de clase estático que gestiona la parte de ventas del menú
     public static void ventas(Cafetera cafetera) {
 
-        double saldoCliente;
+        double saldoCliente = 0;
         //Variable para controlar si se realiza la compra o no
         boolean compra = false;
         //Utilizo la clase DecimalFormat para dar formato a los datos
@@ -92,7 +84,7 @@ public class Menu {
             }
 
             //Controlo que el saldo introducido sea igual o superior al precio del producto más barato
-            if (cafetera.getSaldoCliente() >= PRECIO_LECHE) {
+            if (cafetera.getSaldoCliente() >= Cafetera.getPRECIO_LECHE()) {
                 String opcionesVenta;
                 String opcionAzucar;
                 String opcionCantAzucar;
@@ -122,73 +114,73 @@ public class Menu {
                     switch (opcionesVenta.toUpperCase()) {
                         case "A1":
                             //Si el saldo es inferior al precio del producto no se realiza la venta
-                            if (cafetera.getSaldoCliente() >= PRECIO_CAFESOLO) {
-                                cafetera.servirCafeSolo();
-                                cafetera.setSaldoCliente(cafetera.getSaldoCliente() - PRECIO_CAFESOLO);
+                            if (cafetera.getSaldoCliente() >= Cafetera.getPRECIO_CAFESOLO()) {
+                                cafetera.servirCafeSolo(saldoCliente);
+                                cafetera.setSaldoCliente(cafetera.getSaldoCliente() - Cafetera.getPRECIO_CAFESOLO());
                                 compra = true;
                             }
                             break;
                         case "A2":
-                            if (cafetera.getSaldoCliente() >= PRECIO_CAFELARGO) {
-                                cafetera.servirCafeLargo();
-                                cafetera.setSaldoCliente(cafetera.getSaldoCliente() - PRECIO_CAFELARGO);
+                            if (cafetera.getSaldoCliente() >= Cafetera.getPRECIO_CAFELARGO()) {
+                                cafetera.servirCafeLargo(saldoCliente);
+                                cafetera.setSaldoCliente(cafetera.getSaldoCliente() - Cafetera.getPRECIO_CAFELARGO());
                                 compra = true;
                             }
                             break;
                         case "A3":
-                            if (cafetera.getSaldoCliente() >= PRECIO_CAFELECHE) {
-                                cafetera.servirCafeLeche();
-                                cafetera.setSaldoCliente(cafetera.getSaldoCliente() - PRECIO_CAFELECHE);
+                            if (cafetera.getSaldoCliente() >= Cafetera.getPRECIO_CAFELECHE()) {
+                                cafetera.servirCafeLeche(saldoCliente);
+                                cafetera.setSaldoCliente(cafetera.getSaldoCliente() - Cafetera.getPRECIO_CAFELECHE());
                                 compra = true;
                             }
                             break;
                         case "A4":
-                            if (cafetera.getSaldoCliente() >= PRECIO_CORTADO) {
-                                cafetera.servirCafeCortado();
-                                cafetera.setSaldoCliente(cafetera.getSaldoCliente() - PRECIO_CORTADO);
+                            if (cafetera.getSaldoCliente() >= Cafetera.getPRECIO_CORTADO()) {
+                                cafetera.servirCafeCortado(saldoCliente);
+                                cafetera.setSaldoCliente(cafetera.getSaldoCliente() - Cafetera.getPRECIO_CORTADO());
                                 compra = true;
                             }
                             break;
                         case "B1":
-                            if (cafetera.getSaldoCliente() >= PRECIO_CAFESOLO) {
-                                cafetera.servirCafeSoloDescafeinado();
-                                cafetera.setSaldoCliente(cafetera.getSaldoCliente() - PRECIO_CAFESOLO);
+                            if (cafetera.getSaldoCliente() >= Cafetera.getPRECIO_CAFESOLO()) {
+                                cafetera.servirCafeSoloDescafeinado(saldoCliente);
+                                cafetera.setSaldoCliente(cafetera.getSaldoCliente() - Cafetera.getPRECIO_CAFESOLO());
                                 compra = true;
                             }
                             break;
                         case "B2":
-                            if (cafetera.getSaldoCliente() >= PRECIO_CAFELARGO) {
-                                cafetera.servirCafeLargoDescafeinado();
-                                cafetera.setSaldoCliente(cafetera.getSaldoCliente() - PRECIO_CAFELARGO);
+                            if (cafetera.getSaldoCliente() >= Cafetera.getPRECIO_CAFELARGO()) {
+                                cafetera.servirCafeLargoDescafeinado(saldoCliente);
+                                cafetera.setSaldoCliente(cafetera.getSaldoCliente() - Cafetera.getPRECIO_CAFELARGO());
                                 compra = true;
                             }
                             break;
                         case "B3":
-                            if (cafetera.getSaldoCliente() >= PRECIO_CAFELECHE) {
-                                cafetera.servirCafeLecheDescafeinado();
-                                cafetera.setSaldoCliente(cafetera.getSaldoCliente() - PRECIO_CAFELECHE);
+                            if (cafetera.getSaldoCliente() >= Cafetera.getPRECIO_CAFELECHE()) {
+                                cafetera.servirCafeLecheDescafeinado(saldoCliente);
+                                cafetera.setSaldoCliente(cafetera.getSaldoCliente() - Cafetera.getPRECIO_CAFELECHE());
                                 compra = true;
                             }
                             break;
                         case "B4":
-                            if (cafetera.getSaldoCliente() >= PRECIO_CORTADO) {
-                                cafetera.servirCafeCortadoDescafeinado();
-                                cafetera.setSaldoCliente(cafetera.getSaldoCliente() - PRECIO_CORTADO);
+                            if (cafetera.getSaldoCliente() >= Cafetera.getPRECIO_CORTADO()) {
+                                cafetera.servirCafeCortadoDescafeinado(saldoCliente);
+                                cafetera.setSaldoCliente(cafetera.getSaldoCliente() - Cafetera.getPRECIO_CORTADO());
                                 compra = true;
                             }
                             break;
                         case "C1":
-                            if (cafetera.getSaldoCliente() >= PRECIO_CHOCOLATE) {
-                                cafetera.servirChocolate();
-                                cafetera.setSaldoCliente(cafetera.getSaldoCliente() - PRECIO_CHOCOLATE);
+                            if (cafetera.getSaldoCliente() >= Cafetera.getPRECIO_CHOCOLATE()) {
+                                cafetera.servirChocolate(saldoCliente);
+                                cafetera.setSaldoCliente(cafetera.getSaldoCliente() - Cafetera.getPRECIO_CHOCOLATE());
                                 compra = true;
                             }
                             break;
                         case "D1":
                         case "D2":
-                            if (cafetera.getSaldoCliente() >= PRECIO_LECHE) {
-                                cafetera.servirLeche();
-                                cafetera.setSaldoCliente(cafetera.getSaldoCliente() - PRECIO_LECHE);
+                            if (cafetera.getSaldoCliente() >= Cafetera.getPRECIO_LECHE()) {
+                                cafetera.servirLeche(saldoCliente);
+                                cafetera.setSaldoCliente(cafetera.getSaldoCliente() - Cafetera.getPRECIO_LECHE());
                                 compra = true;
                             }
                             break;
@@ -273,7 +265,7 @@ public class Menu {
                 cafetera.setSaldoCliente(0);
             }
             //Este proceso se producirá hasta que se introduzca el saldo mínimo y se realice la venta
-        } while (cafetera.getSaldoCliente() < PRECIO_LECHE && compra == false);
+        } while (cafetera.getSaldoCliente() < Cafetera.getPRECIO_LECHE() && compra == false);
 
         //Muestro los datos al usuario del saldo restante tras el pedido
         JOptionPane.showMessageDialog(null, "[Daw Coffee]\n"
@@ -375,7 +367,8 @@ public class Menu {
 
                 break;
             case 3:
-                JOptionPane.showMessageDialog(null, "Se han realizado: " + cafetera.getNumVentasRealizadas() + " ventas");
+                JOptionPane.showMessageDialog(null, "Se han realizado: " + cafetera.getNumVentasRealizadas() + " ventas \n"
+                        + "El saldo acumulado es: " + cafetera.getSaldoAcumulado() + " euros.");
                 break;
             case 4:
                 int opciondepositosElegida;
